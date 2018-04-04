@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>干部任免审批表</title>
+<style>
+.table-wuxiaofa{font-size: 14px;
+                  text-align: center;}
+  .table-wuxiaofa-wu{text-align: center;
+                     font-size: 14px;}
+	tr{
+		border:0px solid #333;
+	}
+	p{font-family:"宋体"; padding:0px 0;line-height:10px;}
+  td{padding:0px 0px 0px 0px; background-color: #fff;}
+tr{padding:0px 0px 0px 0px; background-color: #fff;}
+</style>
+<script>
+function btnPrintClick(){ 
+   var temp = document.createElement("form");
+  temp.action ="";
+  temp.method = "post";
+  temp.style.display = "none";
+    var opt = document.createElement("textarea");
+    opt.name = "x";
+    opt.id="opt"
+    temp.appendChild(opt);
+  document.body.appendChild(temp);
+  document.getElementById("opt").innerHTML=document.documentElement.innerHTML;
+  //console.log(document.documentElement.innerHTML);
+  temp.submit();
+  return temp;
+    }  
+</script>
+</head>
+
+<body>
+<!-- <form id="formid" role="form" action="" method="post" >
+<input type="hidden" name="html" id="html1" /> -->
+ <input id="btnPrint" value="生成Word"  type="button" onclick="btnPrintClick()"/></input>
+ <!-- </form>  --> 
+  <table class="table-wuxiaofo" width="640px" border="0" cellspacing="1" align="center" style="background-color: #000;border:none; font-size: 14px;"> 
+  <tr><h2 align="center">干部详细资料表</h2></tr>
+   <tr border="none" style="border-collapse:collapse;">
+  	 <td align="center"  >姓名</td>
+  	 <td align="center">{$dx.name}</td>
+  	 <td align="center" >性别 </td>
+  	 <td align="center" >{$rx.sex} </td>
+  	 <td align="center" > 出生年月</br/>（岁）</td>
+  	 <td align="center" >{$rx.birthday}</br/>（{$year}岁）</td>
+     <td rowspan="4" width="116px" ><img  align="center" src="__ADMIN__/images/zgszp.jpg" width="116px" height="156px" alt=""/></td>
+      </tr>
+    <tr height="30px" line-height="-2px" style="border-collapse:collapse;">
+  	<td  align="center">民族</td>
+  	<td  align="center">{$rx.nation}</td>
+  	<td  align="center">籍贯</td>
+  	<td  align="center">{$rx['jiguan_p']}{$rx['jiguan_c']}</td>
+  	<td  colspan="1"  align="center">出生地</td>
+    <td  align="center">{$rx['jiguan_p']}{$rx['jiguan_c']}</td>
+    </tr>
+       <tr style="border-collapse:collapse;">
+  		 <td  align="center">入党</br/>时间</td>
+  		 <td  align="center">{$rx.joinpartytime}</td>
+  		 <td  align="center">参加工</br/>作时间</td>
+  		 <td  align="center">{$rx.alljobtime}</td>
+  		 <td colspan="1" align="center">健康状况</td>
+  		 <td  align="center" align="center">{$rx.health}</td>
+      </tr>
+       <tr style="border-collapse:collapse;">
+  		 <td  align="center">专业技</br/>术职务</td>
+  		 <td colspan="2" align="center">{$rx.ptitle}</td>
+  		 <td  align="center">熟悉专业</br/>有何专长</td>
+  		 <td colspan="2" align="center">{$rx.specialjob}</td>
+       </tr>
+      <tr height="35px" line-height="-2px"> 
+  		<td rowspan="2" align="center">学</br/>历</br/>学</br/>位</td>
+  		<td  align="center">全日制</br/>教&nbsp&nbsp育</td>
+  		<td colspan="2">{$gx['qedubg']}</td>
+  		<td  align="center">毕业院校</br/>系及专业</td>
+      <td colspan="4" align="center">{$gx['qschool']}
+  			</br/>{$gx['qzhuanye']}
+     </td>
+      </tr>
+       <tr height="40px" line-height="5px">
+  		<td  align="center">在　职</br/>教　育</td>
+  		<td colspan="2" align="center"></td>
+  		<td  align="center">毕业院校</br/>系及专业</td>
+  		<td colspan="3"  align="center">{$gx['zschool']}{$gx['zzhuanye']}</td>
+      </tr>
+      <tr height="45px">
+      <td colspan="2"  align="center">现&nbsp&nbsp任&nbsp&nbsp职&nbsp&nbsp务</td>
+  		<td colspan="6" align="center">{$rx['job']} </td>
+      </tr>
+      <tr height="45px">
+      <td colspan="2"  align="center">拟&nbsp&nbsp任&nbsp&nbsp职&nbsp&nbsp务</td>
+      <td colspan="6" align="center"></td>
+      </tr>
+      <tr  height="45px">
+      <td colspan="2"  align="center">拟&nbsp&nbsp免&nbsp&nbsp职&nbsp&nbsp务</td>
+      <td colspan="6"></td>
+      </tr>
+      <tr  height="580px">
+      <td width="50px"><p align="center">简</p></br/></br/></br/></br/></br/></br/></br/></br/><p align="center">历</p></td>
+          <td colspan="6">
+          {$jx['starttime']}&mdash;{$jx['endtime']}&nbsp&nbsp&nbsp{$jx['information']}
+          <!-- 1988.09—1990.08&nbsp&nbsp&nbsp舟山商业学校财务会计专业学习
+                    </br/>1990.08—1990.09&nbsp&nbsp&nbsp浙江林学院劳动服务公司职工
+                    </br/>1990.09—1999.01&nbsp&nbsp&nbsp浙江林学院投资企业会计、财务科长
+                     </br/> 1999.01—2005.07&nbsp&nbsp&nbsp浙江林学院审计处干部（1999.09-2002.07 浙江林学院经济管理专业函授专科&nbsp&nbsp&nbsp毕业），2004.12经济师
+
+                     </br/>2005.07—2008.07&nbsp&nbsp&nbsp浙江林学院审计处副处长（2005.03-2008.01 浙江
+  林学院园林专业函授本科学&nbsp&nbsp&nbsp习，获农学学士学位）
+
+                    </br/>2008.07—2011.04&nbsp&nbsp&nbsp浙江农林大学校园建设与管理处处长（其间：
+  2013.10-2013.11国家教育行政&nbsp&nbsp&nbsp学院高校领导干部
+  进修班跟班学习）
+
+                   </br/>2011.04—2013.11&nbsp&nbsp&nbsp浙江农林大学后勤集团总经理
+
+
+                 </br/>2013.11—2015.08&nbsp&nbsp&nbsp浙江农林大学后勤集团总经理
+                 </br/>2015.08— &nbsp&nbsp&nbsp浙江农林大学党委办公室、学校办公室主任，2017.01高级经济师 -->
+                 <P>&nbsp</P>
+   
+  </td>
+          
+      </tr>
+</table>
+       <table  class="table-wuxiaofo" width="640px" border="0" cellspacing="1" align="center" style="background-color: #000;border:none; font-size: 14px; margin-top: 100px;"> 
+      <tr height="150px">
+            
+  		<td  align="center" >奖</br/>惩</br/>情</br/>况</td>
+          <td colspan="6">{$rx['jiangcheng']} </td>
+          
+      </tr>
+       
+      <tr height="100px">
+            
+  		<td  align="center">年度</br/>考核</br/>结果</td>
+          <td colspan="6">{$rx['jieguo']}<!-- 2014、2015年度均为称职 --></td>
+          
+      </tr>
+
+      <tr height="150px">
+            
+  		<td  align="center">任</br/>免</br/>理</br/>由</p></td>
+          <td colspan="6"></td>
+          
+      </tr>
+      <tr>
+            
+  		<td rowspan="7" overflow=“hidden” align="center" width="50px" margin-left="10px">主</br/>要</br/>家</br/>庭</br/>成</br/>员</br/>及</br/>重</br/>要</br/>社</br/>会</br/>关</br/>系</td>
+  <td ><p align="center">称谓</p></td>
+  <td ><p align="center">姓名</p></td>
+  <td ><p align="center">出生年月</p></td>
+  <td ><p align="center">政治面貌</p></td>
+  <td colspan="4"><p align="center">工 作 单 位 及 职 务</p></td>
+          
+      </tr>
+      {volist name="hx" id="h" length="6"}
+      <tr>
+  		<td ><p align="center">{$h.relation}</p></td>
+  		<td ><p align="center">{$h.name}</p></td>
+  		<td ><p align="center" font-family="Times New Roman">{$h.birthday}</p></td>
+  		<td ><p align="center">{$h.party}</p></td>
+  		<td colspan="4"><p align="center">{$h.workplace}</p></td>
+          
+      </tr>
+      {/volist}
+      <!-- <tr>
+  		<td ><p align="center">儿子</p></td>
+  		<td ><p align="center">潘褚安</p></td>
+  		<td ><p align="center">1995.08</p></td>
+  		<td ><p align="center">共青团员</p></td>
+  		<td colspan="4"><p align="center">浙江传媒学院三年级学生</p></td>
+          
+      </tr>
+      <tr>
+  		<td ><p align="center">父亲</p></td>
+  		<td ><p align="center">潘汤法</p></td>
+  		<td ><p align="center">1939.02</p></td>
+  		<td ><p align="center">中共党员</p></td>
+  		<td colspan="4"><p align="center">临安市横路乡后干村务农</p></td>
+          
+      </tr>
+      <tr>
+          <td ><p align="center">母亲</p></td>
+          <td ><p align="center">李银花</p></td>
+          <td ><p align="center">1944.08</p></td>
+          <td ><p align="center">群众</p></td>
+          <td colspan="4"><p align="center">临安市横路乡后干村务农</p></td>
+          
+      </tr> -->
+      <!-- <tr>
+        <td ><p align="center">&nbsp</p></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>
+          <td colspan="4"></td>
+          
+      </tr>
+      <tr>
+         <td ><p align="center">&nbsp</p></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>
+          <td colspan="4"></td>
+          
+      </tr> -->
+      
+        
+       <tr height="110px" >
+            
+  		 <td overflow=“hidden” align="center" width="30px">呈</br/>报</br/>单</br/>位
+  </td>
+  		 <td colspan="6"><p align="right" font-family="Times New Roman" padding="20px"></br></br></br></br></br>（盖章）&nbsp&nbsp&nbsp</br/></br/>&nbsp&nbsp年 &nbsp&nbsp 月 &nbsp&nbsp 日&nbsp&nbsp&nbsp </p></td>
+          
+      </tr>
+       <tr height="180px" >
+            
+  		 <td  overflow=“hidden” align="center" width="30px">审 意</br/>批 &nbsp&nbsp&nbsp</br/>机 &nbsp&nbsp&nbsp</br/>关 见</br/></td>
+  		 <td colspan="3"><p align="right"></br></br></br></br></br>（盖章）&nbsp&nbsp&nbsp</br/></br/>&nbsp&nbsp年&nbsp&nbsp &nbsp 月&nbsp&nbsp&nbsp  日 &nbsp&nbsp&nbsp </p></td>
+  		 <td align="center" >行&nbsp任</br/>政&nbsp免</br/>机&nbsp意</br/>关&nbsp见</td>
+          <td colspan="3"><p align="right"></br></br></br></br></br>（盖章）&nbsp&nbsp&nbsp</br/></br/>&nbsp&nbsp年 &nbsp&nbsp&nbsp 月 &nbsp&nbsp&nbsp 日 &nbsp&nbsp&nbsp </p></td>
+      </tr>
+    </table>
+<p style="width: 550px;margin: 0 auto; font-size: 14px;"></br>填表人：</p></br>
+
+</body>
+</html>

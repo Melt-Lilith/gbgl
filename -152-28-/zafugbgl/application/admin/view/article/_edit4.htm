@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>干部考核与信息管理系统</title>
+<meta name="description" content="Dashboard">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--Basic Styles-->
+<link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+<link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+<link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+<!--Beyond styles-->
+<link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+<link href="__ADMIN__/style/demo.css" rel="stylesheet">
+<link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+<link href="__ADMIN__/style/animate.css" rel="stylesheet">
+<link href="__ADMIN__/style/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__/style/style.css" rel="stylesheet">
+<link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+<link href="__ADMIN__/style/admin.css" rel="stylesheet">
+<link href="__ADMIN__/style/app.css" rel="stylesheet">
+ 
+
+ <script type="text/javascript"> 
+
+
+// 编写一个函数，供添加按钮调用，动态在表格的最后一行添加子节点；
+var num=2;
+function add(){
+num++;
+var tab=document.getElementById("list");
+var tr=document.createElement("tr");
+var xh=document.createElement("td");
+var xm=document.createElement("td");
+var xl=document.createElement("td");
+var xn=document.createElement("td");
+var xk=document.createElement("td");
+xh.innerHTML="   <select class='form-control'  required='required'><option>请选择</option><option>父亲</option><option>母亲</option><option>妻子</option><option>丈夫</option><option>儿子</option><option>女儿</option></select>";
+xm.innerHTML="<input type='text'  value='' name="+num+"['name']  class='form-control' placeholder='家属姓名' required='required'/>";
+xl.innerHTML="<input type='date'  value='' name="+num+"['birth']  class='form-control' placeholder='' required='required'/> ";
+xn.innerHTML="<input type='text' name="+num+"['political'] value='' class='form-control'  />";
+xk.innerHTML="<input type='text'  value='' name="+num+"['workpalce']  class='form-control' placeholder='' required='required'/> ";
+var del=document.createElement("td");
+del.innerHTML="<a href='javascript:;' onclick='del(this)' >删除</a>";
+
+tab.appendChild(tr);
+tr.appendChild(xh);
+xh.setAttribute("width","15%");
+tr.appendChild(xm);
+xm.setAttribute("width","15%");
+tr.appendChild(xl);
+xl.setAttribute("width","20%");
+tr.appendChild(xn);
+xn.setAttribute("width","10%");
+tr.appendChild(xk);
+xk.setAttribute("width","32%");
+tr.appendChild(del);
+del.setAttribute("width","8%");
+}
+
+
+// 创建删除函数
+function del(obj)
+{
+var tr=obj.parentNode.parentNode;
+tr.parentNode.removeChild(tr);
+}
+
+
+
+</script> 
+ 
+</head>
+<body>
+<!-- 头部 --> 
+{include file="public/top" /} 
+<!-- /头部 -->
+<div class="tpl-page-container tpl-page-header-fixed"> 
+    <!-- Page Sidebar --> 
+    {include file="public/left" /} 
+    <!-- /Page Sidebar --> 
+    <!-- Page Content -->
+    <div class="tpl-content-wrapper"> 
+      <!-- Page Breadcrumb -->
+      <div>
+        <ol class="breadcrumb">
+          <li><a href="#">首页</a></li>
+          <li><a href="#">干部信息管理</a></li>
+          <li><a href="#">干部信息查看</a></li>
+          <li class="active">编辑</li>
+        </ol>
+      </div>
+      <!-- /Page Breadcrumb --> 
+      
+      <!-- Page Body -->
+      <div class="page-body">
+        <div class="row">
+          <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="widget">
+              <div class="widget-header bordered-bottom bordered-blue"> <span class="widget-caption"><a href="__index__/index.php/admin/Article/edit/id/{$id}">基本信息&nbsp;&nbsp;&nbsp;</a></span>
+              <span class="widget-caption"><a href="__index__/index.php/admin/Article/edit2/id/{$id}">教育&nbsp;&nbsp;&nbsp;</a></span><span class="widget-caption"><a href="__index__/index.php/admin/Article/edit3/id/{$id}">简历&nbsp;&nbsp;&nbsp;</a></span> <span class="widget-caption"><a href="__index__/index.php/admin/Article/edit4/id/{$id}">家庭信息&nbsp;&nbsp;&nbsp;</a></span></div>
+            <div class="widget-body1">
+            <div id="horizontal-form">
+            <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+            <div class="sc">
+                <div class="checkbox" style="padding-top: 3px;">
+               </div>
+               
+                </div>
+              <table class="table table-bordered  table-hover table-condensed text-center" >
+                <thead>
+                  <tr>
+        <th style="text-align:center" width="15%">称谓</th> 
+        <th style="text-align:center" width="15%">姓名</th>  
+        <th style="text-align:center" width="20%">出生年月</th>  
+        <th style="text-align:center" width="10%">政治面貌</th> 
+        <th style="text-align:center" width="32%">工作单位</th> 
+        <th style="text-align:center" width="8%"></th> 
+    </tr>  
+    <tbody  id="list">
+                {volist name="arts" id="arts"}
+                <tr>
+      <td  style="text-align:center; " width="15%">
+              <select class="form-control"  required="required">
+               <option>请选择</option>
+               <option>父亲</option>
+               <option>母亲</option>
+               <option>妻子</option>
+               <option>丈夫</option>
+               <option>儿子</option>
+               <option>女儿</option>
+              </select>
+      </td>  
+      <td  style="text-align:center; " width="15%" ><input type="text"  value="" name=""  class="form-control" placeholder="家属姓名" required="required"/></td>  
+      <td  style="text-align:center; " width="20%"><input type="date"  value="" name=""  class="form-control"  required="required"/></td>
+      <td  style="text-align:center; " width="10%">
+              <input type="text"  value="" name=""  class="form-control" placeholder="家属政治面貌" required="required"/> </td>
+      <td  style="text-align:center; " width="32%">
+              <input type="text"  value="" name=""  class="form-control" placeholder="家属工作单位" required="required"/> </td>
+       <td style="text-align:center" width="8%"> <a href='javascript:;' onclick='del(this)' >删除</a></td>
+      
+    </tr> 
+      {/volist} 
+                    <tr>
+      <td  style="text-align:center; " width="15%">
+              <select class="form-control"  required="required">
+               <option>请选择</option>
+               <option>父亲</option>
+               <option>母亲</option>
+               <option>妻子</option>
+               <option>丈夫</option>
+               <option>儿子</option>
+               <option>女儿</option>
+              </select>
+      </td>  
+      <td  style="text-align:center; " width="15%" ><input type="text"  value="" name=""  class="form-control" placeholder="家属姓名" required="required"/></td>  
+      <td  style="text-align:center; " width="20%"><input type="date"  value="" name=""  class="form-control"  required="required"/></td>
+      <td  style="text-align:center; " width="10%">
+              <input type="text"  value="" name=""  class="form-control" placeholder="家属政治面貌" required="required"/> </td>
+      <td  style="text-align:center; " width="32%">
+              <input type="text"  value="" name=""  class="form-control" placeholder="家属工作单位" required="required"/> </td>
+       <td style="text-align:center" width="8%"> <a href='javascript:;' onclick='del(this)' >删除</a></td>
+      
+    </tr> 
+    
+</table> 
+</div> 
+<div id="addtrdiv" style="margin-top:-15px; width: 15%; float: right;">  
+  <p></p> 
+   <button type="button" class="btn btn-xs btn-link" onclick="add()">添加记录</button>  
+</div>  
+                     
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">保存信息</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Page Body --> 
+    </div>
+    <!-- /Page Content --> 
+  
+</div>
+
+<!--Basic Scripts--> 
+<script src="__ADMIN__/style/jquery_002.js"></script> 
+<script src="__ADMIN__/style/bootstrap.js"></script> 
+<script src="__ADMIN__/style/jquery.js"></script> 
+<script src="__ADMIN__/js/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__/style/jquery.js"></script> 
+<script type="text/javascript" src="__ADMIN__/style/jquery.cityselect.js"></script> 
+<!--Beyond Scripts--> 
+<script src="__ADMIN__/style/beyond.js"></script> 
+<script src="__ADMIN__/style/distpicker.data.js"></script> 
+<script src="__ADMIN__/style/distpicker.js"></script> 
+<script src="__ADMIN__/style/style.js"></script> 
+<script src="__ADMIN__/style/fileinput.js" type="text/javascript"></script> 
+<script src="__ADMIN__/style/fileinput_locale_fr.js" type="text/javascript"></script> 
+<script src="__ADMIN__/style/fileinput_locale_es.js" type="text/javascript"></script>
+<script src="__ADMIN__/js/amazeui.min.js"></script>
+<script src="__ADMIN__/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>干部考核与信息管理系统</title>
+<meta name="description" content="Dashboard">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--Basic Styles-->
+<link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+<link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+<link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+<!--Beyond styles-->
+<link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+<link href="__ADMIN__/style/demo.css" rel="stylesheet">
+<link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+<link href="__ADMIN__/style/animate.css" rel="stylesheet">
+<link href="__ADMIN__/style/style.css" rel="stylesheet">
+<link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+<link href="__ADMIN__/style/admin.css" rel="stylesheet">
+<link href="__ADMIN__/style/app.css" rel="stylesheet">
+
+<!--Basic Scripts-->
+<script src="__ADMIN__/style/jquery_002.js"></script>
+<script src="__ADMIN__/style/bootstrap.js"></script>
+<script src="__ADMIN__/style/jquery.js"></script>
+<script src="__ADMIN__/js/jquery.min.js"></script> 
+<!--Beyond Scripts-->
+</head>
+<body>
+<!-- 头部 --> 
+{include file="public/top"} 
+<!-- /头部 -->
+
+<div class="tpl-page-container tpl-page-header-fixed">
+  <!-- Page Sidebar --> 
+  {include file="public/left"} 
+  <!-- /Page Sidebar --> 
+  <!-- Page Content -->
+  <div class="tpl-content-wrapper"> 
+    <!-- Page Breadcrumb -->
+    <div>
+        <ol class="breadcrumb">
+          <li><a href="#">首页</a></li>
+          <li><a href="#">干部信息管理</a></li>
+          <li class="active">干部信息查看</li>
+        </ol>
+      </div>
+    <!-- /Page Breadcrumb -->
+    <div class="page-body">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+          <form class="form-horizontal" role="form" action="__index__/index.php/admin/Article/lst" method="post" enctype="multipart/form-data">
+            <div class="widget-header1 bordered-bottom bordered-blue"> <span class="widget-caption">关键字:</span>
+              <div class="col-lg-2 col-sm-3 col-xs-3 ">
+                <select name="part" style="width: 100%;">
+                  <option selected="selected" value="0">请选择部门</option>
+                  
+                         {volist name="department" id="art"}
+                          
+                  <option value="{$art.id}" >{$art.catename}</option>
+                  
+						{/volist}
+              
+                </select>
+              </div>
+              <div class="col-lg-1 col-sm-2 col-xs-2">
+                <select name="selectway" style="width: 120%;">
+                  <option selected="selected" value="name">按姓名查找</option>
+                  <option value="worknum">按工号查找</option>
+                </select>
+              </div>
+              <div class="col-lg-3 col-sm-3 col-xs-3">
+                <input class="form-control11" id="xingming" placeholder="" name="information"  type="text">
+              </div>
+              <input type="submit" value="查找"  class="btn btn-default fudong">
+            </div>
+          </form>
+          <div class="widget-body1">
+            <div id="horizontal-form">
+            <form class="form-horizontal" role="form" action="__index__/index.php/admin/Article/show" method="post" enctype="multipart/form-data">
+            <div class="sc">
+                <div class="checkbox" style="padding-top: 3px;">
+                <label><input type="checkbox" name="" value="" id="all">全选</label></div>
+                <button type="submit"  class="btn btn-default fudong1">生成</button>
+                </div>
+              <table class="table table-bordered  table-hover table-condensed text-center">
+                <thead>
+                  <tr>
+                    <th width="5%">排序</th>
+                    <th width="10%">工号</th>
+                    <th width="10%">姓名</th>
+                    <th width="10%">生日</th>
+                    <th width="15%">部门</th>
+                    <th width="20%">职务</th>
+                    <th width="10%">类别</th>
+                    <th width="10%">操作</th>
+                    <th width="5%">选择</th>
+                  </tr>
+                </thead>
+                
+                
+                
+                <tbody  id="list">
+                
+                {volist name="artres" id="art"}
+                <tr>
+                    <label>
+                  <td align="center">{$art.sort}</td>
+                  <td>{$art.worknum}</td>
+                  <td>{$art.name}</td>
+                  <td>{$art.birthday}</td>
+                  <td>{$art.catename}</td>
+                  <td>{$art.job}</td>
+                  <td>{$art["type"]}</td>
+                  <td align="center"><a href="{:url('edit',array('id'=>$art['id']))}" class="btn btn-primary btn-sm shiny"> <i class="fa fa-edit"></i> 编辑 </a> <!-- <a href="#" onClick="warning('确实要删除吗', '{:url('del',array('id'=>$art['id']))}')" class="btn btn-danger btn-sm shiny"> <i class="fa fa-trash-o"></i> &nbsp;删除 </a> -->
+                    </td>
+                    <td>
+                     
+                      <input type="checkbox" name="{$i}" value="{$art.id}">
+                    
+                    </td>
+                    </label>
+                </tr>
+                {/volist}
+                  </tbody>
+                
+              </table>
+              
+              
+              </form>
+              <script>
+                                        	$("#all").click(function(){   
+                                        	    if(this.checked){   
+                                        	        $("#list :checkbox").prop("checked", true);  
+                                        	    }else{   
+                                        		$("#list :checkbox").prop("checked", false);
+                                        	    }   
+                                        	});
+              </script>
+              <div id="sz" align="center"> {$artres->render()} </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  
+  <!-- /Page Content --> 
+</div>
+<script src="__ADMIN__/style/beyond.js"></script>
+<script src="__ADMIN__/js/amazeui.min.js"></script>
+<script src="__ADMIN__/js/app.js"></script>
+</body>
+</html>

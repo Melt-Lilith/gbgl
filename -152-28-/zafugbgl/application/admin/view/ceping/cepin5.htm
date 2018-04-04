@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>干部考核与信息管理系统</title>
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+
+	<link href="__ADMIN__/style/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+
+    <link href="__ADMIN__/style/style.css" rel="stylesheet">
+    <link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+<link href="__ADMIN__/style/admin.css" rel="stylesheet">
+<link href="__ADMIN__/style/app.css" rel="stylesheet">
+<!-- 新增手机端css -->
+<link href="__ADMIN__/style/jzstyle.css" rel="stylesheet">
+<!-- 开关 -->
+<link href="__ADMIN__/style/lc_switch.css" rel="stylesheet">
+ <!-- 弹出窗口 2017.12.1-->
+<link href="__ADMIN__/style/animate.min.css" rel="stylesheet">
+<!-- <link href="__ADMIN__/style/common.css" rel="stylesheet"> -->
+
+<!-- end -->
+</head>
+<body>
+	<!-- 头部 -->
+	{include file="public/top"} 
+
+	<!-- /头部 -->
+<div class="tpl-page-container tpl-page-header-fixed"> 
+                        <!-- Page Sidebar -->
+            {include file="public/left"} 
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="tpl-content-wrapper">
+                <!-- Page Breadcrumb -->
+                <div class="jz-breadcrumb">
+        <ol class="breadcrumb">
+          <li><a href="#">首页</a></li>
+          <li><a href="#">干部测评</a></li>
+          <li class="active">正职测评</li>
+        </ol>
+      </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+<div class="page-body">          
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+   
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue xa-widget-header">
+                <span class="widget-caption">考核测评表</span>
+            </div>
+            <div class="widget-body widget-body2">
+             <!--  判断已测评    -->
+
+            {if($checkobject["0"]["status"]==1)}                     
+            <div id="horizontal-form">
+                    <!--startprint1--> <h4 style="text-align:center; font-weight:600;"><b>浙江农林大学&nbsp;{$checkobject["0"]["bename"]}&nbsp;同志{$year}年度考核测评表</b></h4>
+                     
+                <table class="table table-bordered" >
+                        <caption class="jz-breadcrumb">{$checkobject["0"]["bename"]}同志述职述德述廉述法报告</caption>
+                        <thead>
+                            <tr>
+                                <th>分类</th>
+                                <th>评价</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>德</td>
+                                <td>
+                                <input type="hidden" name="beworknum" value="{$checkobject['0']['beworknum']}">
+                                   {$cepxx.de}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>能</td>
+                                <td>
+                                    {$cepxx.neng}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>勤</td>
+                                <td>
+                                    {$cepxx.qin}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>绩</td>
+                                <td>
+                                    {$cepxx.ji}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>廉</td>
+                                <td>
+                                    {$cepxx.lian}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>总体评价</td>
+                                <td>
+                                    {$cepxx.summary}
+                                </td>
+                            </tr>
+                        </tbody>
+                     </table>
+                     
+                    <div class="clear" style="height: 15px;margin-top: 20px;">   
+
+                        <div class="fanhui">
+                        <a  href="{:url('checklst',array('id'=>$tableid))}" class="btn btn-default">返回</a>
+                        </div>
+                        
+
+                    </div>
+
+                
+                <!--  判断未测评    -->
+               {elseif($checkobject["0"]["status"]==2)}                
+              <div id="horizontal-form">
+                    <!--startprint1--> <h4 style="text-align:center; font-weight:600;"><b>浙江农林大学&nbsp;{$checkobject["0"]["bename"]}&nbsp;同志{$year}年度考核测评表</b></h4>
+                 <form class="form-horizontal" role="form" action="__index__/index.php/admin/Ceping/cepin1"  method="post" enctype="multipart/form-data">  
+                    <table class="table table-bordered" id="wxf-text-center">
+                     	<caption class="jz-breadcrumb">
+                        {$checkobject["0"]["bename"]}同志述职述德述廉述法报告</caption>
+                     	<thead>
+                     		<tr>
+                     			<th>分类</th>
+                                <th>评价要点</th>
+                     			<th>评价</th>
+                     		</tr>
+                     	</thead>
+                     	<tbody>
+                     		<tr>
+                     			<td>能</td>
+                                <td >政策水平、组织协调能力、业务能力、心理素质</td>
+                     			<td>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="neng" id="optionsRadios3" value="好" required="required">&nbsp;好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="neng" id="optionsRadios4"  value="较好"> &nbsp;较好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="neng" id="optionsRadios3" value="一般">&nbsp;一般
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="neng" id="optionsRadios4"  value="差"> &nbsp;差
+                     				</label>
+                     			</td>
+                     		</tr>
+                     		<tr>
+                     			<td>勤</td>
+                                <td>精神状态、工作投入程度、工作作风</td>
+                     			<td>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="qin" id="optionsRadios3" value="好" required="required">&nbsp;好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="qin" id="optionsRadios4"  value="较好"> &nbsp;较好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="qin" id="optionsRadios3" value="一般">&nbsp;一般
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="qin" id="optionsRadios4"  value="差"> &nbsp;差
+                     				</label>
+                     			</td>
+                     		</tr>
+                     		<tr>
+                     			<td>绩</td>
+                                <td>履行职责情况、工作成效</td>
+                     			<td>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="ji" id="optionsRadios3" value="好" required="required">&nbsp;好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="ji" id="optionsRadios4"  value="较好"> &nbsp;较好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="ji" id="optionsRadios3" value="一般">&nbsp;一般
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="ji" id="optionsRadios4"  value="差"> &nbsp;差
+                     				</label>
+                     			</td>
+                     		</tr>
+                     		<tr>
+                     			<td>廉</td>
+                                <td>廉洁自律情况</td>
+                     			<td>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="lian" id="optionsRadios3" value="好" required="required">&nbsp;好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="lian" id="optionsRadios4"  value="较好"> &nbsp;较好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="lian" id="optionsRadios3" value="一般" >&nbsp;一般
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="lian" id="optionsRadios4"  value="差">&nbsp;差 
+                     				</label>
+                     			</td>
+                     		</tr>
+                     		<tr>
+                     			<td>总体评价</td>
+                                <td colspan="2">
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="summary" id="optionsRadios3" value="优秀" required="required">&nbsp;优秀  
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="summary" id="optionsRadios4"  value="称职">  &nbsp;称职
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="summary" id="optionsRadios3" value="基本称职" >&nbsp;基本称职
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="summary" id="optionsRadios4"  value="不称职">&nbsp;不称职
+                     				</label>
+                     			</td>
+                     		</tr>
+                     	</tbody>
+                        
+                     </table>
+                     <!--第二个表格-->
+                     <table class="table table-bordered" id="wxf-text-center">
+                        <caption class="jz-breadcrumb">
+                        {$checkobject["0"]["bename"]}同志德的考核考察评价测评表</caption>
+                        <thead>
+                            <tr>
+                                <th>项目</th>
+                                <th>评价要点</th>
+                                <th>评价意见</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>政治<br>品德</td>
+                                <td >政治立场坚定，注重学习，坚持民主集中制，有正确的世界<br>观，权力观，事业观。宗旨观念强，党性修养好。坚持<br>原则,顾全大局</td>
+                                <td>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="neng" id="optionsRadios3" value="好" required="required">&nbsp;好
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="neng" id="optionsRadios4"  value="较好"> &nbsp;较好
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="neng" id="optionsRadios3" value="一般">&nbsp;一般
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="neng" id="optionsRadios4"  value="差"> &nbsp;差
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="neng" id="optionsRadios4"  value="不了解"> &nbsp;不了解
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>职业<br>道德</td>
+                                <td>忠于职守，秉公用权。求真务实，锐意进取，敢于负责。<br>正确对待个人名利，作风正派，清正廉洁，为人师表</td>
+                                <td>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="qin" id="optionsRadios3" value="好" required="required">&nbsp;好
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="qin" id="optionsRadios4"  value="较好"> &nbsp;较好
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="qin" id="optionsRadios3" value="一般">&nbsp;一般
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="qin" id="optionsRadios4"  value="差"> &nbsp;差
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="neng" id="optionsRadios4"  value="不了解"> &nbsp;不了解
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>社会<br>公德</td>
+                                <td>模范遵纪守法，品行端正，情趣健康，形象良好</td>
+                                <td>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="ji" id="optionsRadios3" value="好" required="required">&nbsp;好
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="ji" id="optionsRadios4"  value="较好"> &nbsp;较好
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="ji" id="optionsRadios3" value="一般">&nbsp;一般
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="ji" id="optionsRadios4"  value="差"> &nbsp;差
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="neng" id="optionsRadios4"  value="不了解"> &nbsp;不了解
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>家庭<br>美德</td>
+                                <td>家庭关系融洽，家风良好，邻里和睦</td>
+                                <td>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="lian" id="optionsRadios3" value="好" required="required">&nbsp;好
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="lian" id="optionsRadios4"  value="较好"> &nbsp;较好
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="lian" id="optionsRadios3" value="一般" >&nbsp;一般
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="lian" id="optionsRadios4"  value="差">&nbsp;差 
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="neng" id="optionsRadios4"  value="不了解"> &nbsp;不了解
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>总体<br>评价</td>
+                                <td>对各方面表现的综合评价</td>
+                                <td>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="lian" id="optionsRadios3" value="好" required="required">&nbsp;好
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="lian" id="optionsRadios4"  value="较好"> &nbsp;较好
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="lian" id="optionsRadios3" value="一般" >&nbsp;一般
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="lian" id="optionsRadios4"  value="差">&nbsp;差 
+                                    </label>
+                                    <label class="checkbox-inline checkbox-place">
+                                            <input type="radio" name="neng" id="optionsRadios4"  value="不了解"> &nbsp;不了解
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                       <table class="table table-bordered" id="wxf-text-center">
+                        <thead>
+                            <tr>
+                                <th colspan="2">考核考察对象在德的方面如有以下情况，请在相应栏目打√</th>
+                               </tr>
+                        </thead>
+                        <tbody align="left">
+                    <tr>
+                            <td  >1、不敢坚持原则，做老好人</td>
+                            <td></td>
+                            </tr>
+                            <tr>
+                            <td >2、大局意识差</td>
+                            <td></td></tr>
+                            <tr>
+                            <td >3、工作责任心不强，在急难险重任务面前退缩逃避、敷衍推诿、怕承担责任</td>
+                            <td></td></tr>
+                            <tr>
+                            <td >4、组织观念不强、工作上不服从组织安排</td>
+                            <td></td></tr>
+                            <tr>
+                            <td >5、闹不团结</td>
+                            <td></td></tr>
+                            <tr>
+                            <td >6、虚报工作业绩</td>
+                            <td></td></tr>
+                            <tr>
+                            <td >7、有跑官要官、拉票等非组织行为</td>
+                            <td></td></tr>
+                            <tr>
+                            <td >8、对个人名利得失比较计较</td>
+                            <td></td></tr>
+                             <tr>
+                            <td >9、学术不端，以不正当手段获取荣誉、称职、学历学位等利益</td>
+                            <td></td></tr>
+                            <tr>
+                            <td >10、发表、传播错误言论，散布贬损他人的小道消息</td>
+                            <td></td></tr>
+                            <tr>
+                            <td >11、讲排场，比阔气，挥霍公款，铺张浪费，追求享受</td>
+                            <td></td></tr>
+                            <tr>
+                            <td >12、大办婚事丧事，造成不良影响</td>
+                            <td></td></tr>
+                            <tr>
+                            <td >13、作风不检点，不注意自身形象</td>
+                            <td></td></tr>
+                            <tr>
+                            <td >14、对亲属和身边工作人员要交不严，利用职权和职务上的影响<br>为他们谋利益</td>
+                            <td></td></tr>
+                            <tr>
+                            <td >15、交友不慎，造成不良后果</td>
+                            <td></td></tr>
+                             <tr>
+                            <td colspan="2">如有上述情况或其他不良表现，请用文字在反面作具体说明</td>
+                            </tr>
+                        </tbody>
+                        
+                     </table>
+                    <!--  手机端表格 -->
+                    <table class="table table-bordered" id="wuxiaofa-text-center">
+                        <!-- <caption>{$checkobject["0"]["bename"]}同志述职述德述廉述法报告</caption> -->
+                        <thead>
+                            <tr>
+                                <th>分类</th>
+                                <th>评价</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>德</td>
+                                <td>
+
+                                <input type="hidden" name="beworknum" value="{$checkobject['0']['beworknum']}">
+                                 <div class=" col-sm-6 ">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                            
+                                            <input type="radio" name="de" id="optionsRadios3" value="好" class="lcs_check lcs_tt2 " autocomplete="off" />好
+                                    </label>
+                                     </div>
+                                     <div class="col-sm-6">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                          
+                                            <input type="radio" name="de" id="optionsRadios4" value="较好" class="lcs_check lcs_tt2 " autocomplete="off" />较好
+                                    </label>
+                                    </div>
+                                     <div class="col-sm-6">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                         
+                                            <input type="radio" name="de" id="optionsRadios3" value="一般" class="lcs_check lcs_tt2 " autocomplete="off" />一般
+                                    </label>
+                                     </div>
+                                     <div class="col-sm-6">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                            <input type="radio" name="de" id="optionsRadios4" value="差" class="lcs_check lcs_tt2 " autocomplete="off" />差
+                                    </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>能</td>
+                                <td>
+                                 <div class=" col-sm-6 ">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                            
+                                            <input type="radio" name="neng" id="optionsRadios3" value="好" class="lcs_check lcs_tt2" autocomplete="off" />好
+                                    </label>
+                                     </div>
+                                     <div class="col-sm-6">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                          
+                                            <input type="radio" name="neng" id="optionsRadios4" value="较好" class="lcs_check lcs_tt2" autocomplete="off" />较好
+                                    </label>
+                                    </div>
+                                     <div class="col-sm-6">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                         
+                                            <input type="radio" name="neng" id="optionsRadios3" value="一般" class="lcs_check lcs_tt2" autocomplete="off" />一般
+                                    </label>
+                                     </div>
+                                     <div class="col-sm-6">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                            <input type="radio" name="neng" id="optionsRadios4" value="差" class="lcs_check lcs_tt2" autocomplete="off" />差
+                                    </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>勤</td>
+                                <td>
+                                 <div class=" col-sm-6 ">
+                                     <label class="checkbox-inline checkbox-place jz-check">
+                                            
+                                            <input type="radio" name="qin" id="optionsRadios3" value="好" class="lcs_check lcs_tt2" autocomplete="off" />好
+                                    </label>
+                                     </div>
+                                     <div class="col-sm-6">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                          
+                                            <input type="radio" name="qin" id="optionsRadios4" value="较好" class="lcs_check lcs_tt2" autocomplete="off" />较好
+                                    </label>
+                                    </div>
+                                     <div class=" col-sm-6 ">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                         
+                                            <input type="radio" name="qin" id="optionsRadios3" value="一般" class="lcs_check lcs_tt2" autocomplete="off" />一般
+                                    </label>
+                                     </div>
+                                     <div class="col-sm-6">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                            <input type="radio" name="qin" id="optionsRadios4" value="差" class="lcs_check lcs_tt2" autocomplete="off" />差
+                                    </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>绩</td>
+                                <td>
+                                 <div class=" col-sm-6 ">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                            
+                                            <input type="radio" name="ji" id="optionsRadios3" value="好" class="lcs_check lcs_tt2" autocomplete="off" />好
+                                    </label>
+                                     </div>
+                                     <div class="col-sm-6">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                          
+                                            <input type="radio" name="ji" id="optionsRadios4" value="较好" class="lcs_check lcs_tt2" autocomplete="off" />较好
+                                    </label>
+                                    </div>
+                                     <div class=" col-sm-6 ">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                         
+                                            <input type="radio" name="ji" id="optionsRadios3" value="一般" class="lcs_check lcs_tt2" autocomplete="off" />一般
+                                    </label>
+                                     </div>
+                                     <div class="col-sm-6">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                            <input type="radio" name="ji" id="optionsRadios4" value="差" class="lcs_check lcs_tt2" autocomplete="off" />差
+                                    </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>廉</td>
+                                <td>
+                                 <div class=" col-sm-6 ">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                            
+                                            <input type="radio" name="lian" id="optionsRadios3" value="好" class="lcs_check lcs_tt2" autocomplete="off" />好
+                                    </label>
+                                     </div>
+                                     <div class="col-sm-6">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                          
+                                            <input type="radio" name="lian" id="optionsRadios4" value="较好" class="lcs_check lcs_tt2" autocomplete="off" />较好
+                                    </label>
+                                    </div>
+                                     <div class=" col-sm-6 ">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                         
+                                            <input type="radio" name="lian" id="optionsRadios3" value="一般" class="lcs_check lcs_tt2" autocomplete="off" />一般
+                                    </label>
+                                     </div>
+                                     <div class="col-sm-6">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                            <input type="radio" name="lian" id="optionsRadios4" value="差" class="lcs_check lcs_tt2" autocomplete="off" />差
+                                    </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>总体评价</td>
+                                <td>
+                                 <div class=" col-sm-6 ">
+                                     <label class="checkbox-inline checkbox-place jz-check">
+                                            
+                                            <input type="radio" name="summary" id="optionsRadios3" value="优秀" class="lcs_check lcs_tt2" autocomplete="off" />优秀
+                                    </label>
+                                     </div>
+                                     <div class="col-sm-6">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                          
+                                            <input type="radio" name="summary" id="optionsRadios4" value="称职" class="lcs_check lcs_tt2" autocomplete="off" />称职
+                                    </label>
+                                    </div>
+                                     <div class=" col-sm-6 ">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                         
+                                            <input type="radio" name="summary" id="optionsRadios3" value="基本称职" class="lcs_check lcs_tt2" autocomplete="off" />基本称职
+                                    </label>
+                                     </div>
+                                     <div class="col-sm-6">
+                                    <label class="checkbox-inline checkbox-place jz-check">
+                                            <input type="radio" name="summary" id="optionsRadios4" value="不称职" class="lcs_check lcs_tt2" autocomplete="off" />不称职
+                                    </label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                     </table>
+                   <!--   手机端表格end -->
+                     <div class="clear" style="height: 15px;margin-top: 20px;" id="jz-clear">   
+                         
+
+                         <div class="col-md-8 col-sm-offset-2 text-center "  >
+
+                           <a class="demo17 rubberBand"><button type="submit" class="btn btn-info " id="jzbtn">提交</button></a>
+
+                        </div>
+                        <div class="fanhui " id="jz-fanhui">
+                           <a  href="{:url('checklst',array('id'=>$tableid))}" class="btn btn-default">返回</a>
+                        </div>
+                        
+                     	</div>
+                       
+
+                        <!--  手机端提交和返回按钮 -->
+                        
+                        <div class="wuxiaofa " id="wuxia-text-center" style="margin-top:0px;">
+                            <a class="demo17 rubberBand"><button type="submit" class="btn btn-info jz-tijiao" id="jzbtn" style="width:100%;">提交</button>
+                           </a>
+                        </div>
+                        <div class="jztel-fanhui" id="jztel-fanhui">
+                               <a  href="{:url('checklst',array('id'=>$tableid))}" class="btn btn-default">返回</a>
+                        </div>
+                        
+                         <!--  手机端提交和返回按钮end -->      
+                    
+                </form>
+              </div>
+                {/if}
+          </div>
+
+        </div>
+    </div>
+   
+ </div>
+ </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+			
+	</div>
+    </div>
+    <!-- 弹出窗口 -->
+<div id="HBox" style="width:300px;height:270px;margin:0 auto;box-shadow:1px 1px 5px #333;-webkit-box-shadow:1px 1px 5px #333;display:none;background-color:#ffffff;">
+ <p style="margin-top : 60px; margin-left:30px;font-size: 35px;font-family: Microsoft YaHei;">系统正在处理中</p>
+</div>
+<!-- end -->
+
+ <script>
+// $(function(){
+  $("#jzbtn").click(function(){
+  //var $el = $('.dialog');
+  //$el.hDialog(); //默认调用
+  //定时关闭
+  $('.demo17').hDialog({width:300,height: 150,hideTime: 10000, modalHide: false,closeHide: false});
+
+  console.log("111"); //返回顶部
+ // $.goTop();
+
+});
+
+ // alert("11");
+</script>
+<!-- 弹出框口 -->
+<script src="__ADMIN__/style/jquery-1.9.1.min.js"></script>
+<script src="__ADMIN__/style/jquery.hDialog.min.js"></script>
+<!-- end -->
+		<script>
+	    $('#file-fr').fileinput({
+	        language: 'fr',
+	        uploadUrl: '#',
+	        allowedFileExtensions : ['jpg', 'png','gif'],
+	    });
+	    $('#file-es').fileinput({
+	        language: 'es',
+	        uploadUrl: '#',
+	        allowedFileExtensions : ['jpg', 'png','gif'],
+	    });
+	    $("#file-0").fileinput({
+	        'allowedFileExtensions' : ['jpg', 'png','gif'],
+	    });
+	    $("#file-1").fileinput({
+	        uploadUrl: '#', // you must set a valid URL here else you will get an error
+	        allowedFileExtensions : ['jpg', 'png','gif'],
+	        overwriteInitial: false,
+	        maxFileSize: 1000,
+	        maxFilesNum: 10,
+	        //allowedFileTypes: ['image', 'video', 'flash'],
+	        slugCallback: function(filename) {
+	            return filename.replace('(', '_').replace(']', '_');
+	        }
+		});
+	    /*
+	    $(".file").on('fileselect', function(event, n, l) {
+	        alert('File Selected. Name: ' + l + ', Num: ' + n);
+	    });
+	    */
+		$("#file-3").fileinput({
+			showUpload: false,
+			showCaption: false,
+			browseClass: "btn btn-primary btn-lg",
+			fileType: "any",
+	        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>"
+		});
+		$("#file-4").fileinput({
+			uploadExtraData: {kvId: '10'}
+		});
+	    $(".btn-warning").on('click', function() {
+	        if ($('#file-4').attr('disabled')) {
+	            $('#file-4').fileinput('enable');
+	        } else {
+	            $('#file-4').fileinput('disable');
+	        }
+	    });    
+	    $(".btn-info").on('click', function() {
+	        $('#file-4').fileinput('refresh', {previewClass:'bg-info'});
+	    });
+	    /*
+	    $('#file-4').on('fileselectnone', function() {
+	        alert('Huh! You selected no files.');
+	    });
+	    $('#file-4').on('filebrowse', function() {
+	        alert('File browse clicked for #file-4');
+	    });
+	    */
+	    $(document).ready(function() {
+	        $("#test-upload").fileinput({
+	            'showPreview' : false,
+	            'allowedFileExtensions' : ['jpg', 'png','gif'],
+	            'elErrorContainer': '#errorBlock'
+	        });
+	        /*
+	        $("#test-upload").on('fileloaded', function(event, file, previewId, index) {
+	            alert('i = ' + index + ', id = ' + previewId + ', file = ' + file.name);
+	        });
+	        */
+	    });
+		</script>
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+
+    <script type="text/javascript" src="__ADMIN__/style/jquery.js"></script> 
+    <script type="text/javascript" src="__ADMIN__/style/jquery.cityselect.js"></script> 
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <script src="__ADMIN__/js/jquery.min.js"></script> 
+    <script src="__ADMIN__/style/distpicker.data.js"></script>
+    <script src="__ADMIN__/style/distpicker.js"></script>
+    <script src="__ADMIN__/style/style.js"></script>
+    <script src="__ADMIN__/js/amazeui.min.js"></script>
+<script src="__ADMIN__/js/app.js"></script>
+        <script src="__ADMIN__/style/fileinput.js" type="text/javascript"></script>
+	<script src="__ADMIN__/style/fileinput_locale_fr.js" type="text/javascript"></script>
+	<script src="__ADMIN__/style/fileinput_locale_es.js" type="text/javascript"></script>
+<!-- 开关按钮 -->
+   <!--  <script src="__ADMIN__/style/lc_switch.js" type="text/javascript"></script>
+ <script type="text/javascript">
+$(document).ready(function(e) {
+    var winWide=$(window).width() ;
+   
+       
+if(winWide<=900)
+    {
+    
+
+    $('input').lc_switch();
+    // triggered each time a field changes status
+    $('body').delegate('.lcs_check', 'lcs-statuschange', function() {
+        var status = ($(this).is(':checked')) ? 'checked' : 'unchecked';
+        console.log('field changed status: '+ status );
+    });
+
+    // triggered each time a field is checked
+    $('body').delegate('.lcs_check', 'lcs-on', function() {
+        console.log('field is checked');
+    });
+    
+    
+    // triggered each time a is unchecked
+    $('body').delegate('.lcs_check', 'lcs-off', function() {
+        console.log('field is unchecked');
+    });
+    }
+   
+
+   
+   $(window).resize(function() {
+      winWide = $(window).width();
+       if(winWide<=900)
+    {
+    
+
+    $('input').lc_switch();
+    // triggered each time a field changes status
+    $('body').delegate('.lcs_check', 'lcs-statuschange', function() {
+        var status = ($(this).is(':checked')) ? 'checked' : 'unchecked';
+        console.log('field changed status: '+ status );
+    });
+
+    // triggered each time a field is checked
+    $('body').delegate('.lcs_check', 'lcs-on', function() {
+        console.log('field is checked');
+    });
+    
+    
+    // triggered each time a is unchecked
+    $('body').delegate('.lcs_check', 'lcs-off', function() {
+        console.log('field is unchecked');
+    });
+    }
+
+
+});
+ 
+    
+});
+</script>  -->
+</body></html>

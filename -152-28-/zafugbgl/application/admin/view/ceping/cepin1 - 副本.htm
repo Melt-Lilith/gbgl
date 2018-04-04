@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>干部考核与信息管理系统</title>
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+
+	<link href="__ADMIN__/style/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+
+    <link href="__ADMIN__/style/style.css" rel="stylesheet">
+    <link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+<link href="__ADMIN__/style/admin.css" rel="stylesheet">
+<link href="__ADMIN__/style/app.css" rel="stylesheet">
+</head>
+<body>
+	<!-- 头部 -->
+	{include file="public/top"} 
+
+	<!-- /头部 -->
+<div class="tpl-page-container tpl-page-header-fixed"> 
+                        <!-- Page Sidebar -->
+            {include file="public/left"} 
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="tpl-content-wrapper">
+                <!-- Page Breadcrumb -->
+                <div>
+        <ol class="breadcrumb">
+          <li><a href="#">首页</a></li>
+          <li><a href="#">干部测评</a></li>
+          <li class="active">民主测评</li>
+        </ol>
+      </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+<div class="page-body">          
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+   
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">考核测评表</span>
+            </div>
+            <div class="widget-body widget-body2">
+             <!--  判断已测评    -->
+
+            {if($checkobject["0"]["status"]==1)}                     
+            <div id="horizontal-form">
+                    <!--startprint1--> <h4 style="text-align:center; font-weight:600;"><b>浙江农林大学&nbsp;{$checkobject["0"]["bename"]}&nbsp;同志{$year}年度考核测评表</b></h4>
+                     
+                     <table class="table table-bordered">
+                        <caption>{$checkobject["0"]["bename"]}利齿同志述职述德述廉述法报告</caption>
+                        <thead>
+                            <tr>
+                                <th>分类</th>
+                                <th>评价</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>德</td>
+                                <td>
+                                <input type="hidden" name="beworknum" value="{$checkobject['0']['beworknum']}">
+                                   {$cepxx.de}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>能</td>
+                                <td>
+                                    {$cepxx.neng}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>勤</td>
+                                <td>
+                                    {$cepxx.qin}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>绩</td>
+                                <td>
+                                    {$cepxx.ji}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>廉</td>
+                                <td>
+                                    {$cepxx.lian}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>总体评价</td>
+                                <td>
+                                    {$cepxx.summary}
+                                </td>
+                            </tr>
+                        </tbody>
+                     </table>
+                     
+                         <div class="clear" style="height: 15px;margin-top: 20px;">   
+
+                        <div class="fanhui">
+                        <a  href="{:url('checklst',array('id'=>$tableid))}" class="btn btn-default">返回</a>
+                        </div>
+                        
+
+                </div>
+
+                
+                <!--  判断未测评    -->
+            {elseif($checkobject["0"]["status"]==2)}                
+                <div id="horizontal-form">
+                    <!--startprint1--> <h4 style="text-align:center; font-weight:600;"><b>浙江农林大学&nbsp;{$checkobject["0"]["bename"]}&nbsp;同志{$year}年度考核测评表</b></h4>
+                    <form class="form-horizontal" role="form" action="__index__/index.php/admin/Ceping/cepin1" method="post" enctype="multipart/form-data">  
+                     <table class="table table-bordered">
+                     	<caption>{$checkobject["0"]["bename"]}同志述职述德述廉述法报告</caption>
+                     	<thead>
+                     		<tr>
+                     			<th>分类</th>
+                     			<th>评价</th>
+                     		</tr>
+                     	</thead>
+                     	<tbody>
+                     		<tr>
+                     			<td>德</td>
+                     			<td>
+                                <input type="hidden" name="beworknum" value="{$checkobject['0']['beworknum']}">
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="de" id="optionsRadios3" value="好" required="required">&nbsp;好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="de" id="optionsRadios4"  value="较好">&nbsp; 较好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="de" id="optionsRadios3" value="一般">&nbsp;一般
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="de" id="optionsRadios4"  value="差">&nbsp; 差
+                     				</label>
+                     			</td>
+                     		</tr>
+                     		<tr>
+                     			<td>能</td>
+                     			<td>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="neng" id="optionsRadios3" value="好" required="required">&nbsp;好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="neng" id="optionsRadios4"  value="较好"> &nbsp;较好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="neng" id="optionsRadios3" value="一般">&nbsp;一般
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="neng" id="optionsRadios4"  value="差"> &nbsp;差
+                     				</label>
+                     			</td>
+                     		</tr>
+                     		<tr>
+                     			<td>勤</td>
+                     			<td>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="qin" id="optionsRadios3" value="好" required="required">&nbsp;好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="qin" id="optionsRadios4"  value="较好"> &nbsp;较好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="qin" id="optionsRadios3" value="一般">&nbsp;一般
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="qin" id="optionsRadios4"  value="差"> &nbsp;差
+                     				</label>
+                     			</td>
+                     		</tr>
+                     		<tr>
+                     			<td>绩</td>
+                     			<td>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="ji" id="optionsRadios3" value="好" required="required">&nbsp;好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="ji" id="optionsRadios4"  value="较好"> &nbsp;较好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="ji" id="optionsRadios3" value="一般">&nbsp;一般
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="ji" id="optionsRadios4"  value="差"> &nbsp;差
+                     				</label>
+                     			</td>
+                     		</tr>
+                     		<tr>
+                     			<td>廉</td>
+                     			<td>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="lian" id="optionsRadios3" value="好" required="required">&nbsp;好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="lian" id="optionsRadios4"  value="较好"> &nbsp;较好
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="lian" id="optionsRadios3" value="一般" >&nbsp;一般
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="lian" id="optionsRadios4"  value="差">&nbsp;差 
+                     				</label>
+                     			</td>
+                     		</tr>
+                     		<tr>
+                     			<td>总体评价</td>
+                     			<td>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="summary" id="optionsRadios3" value="优秀" required="required">&nbsp;优秀  
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="summary" id="optionsRadios4"  value="称职">  &nbsp;称职
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="summary" id="optionsRadios3" value="基本称职" >&nbsp;基本称职
+                     				</label>
+                     				<label class="checkbox-inline checkbox-place">
+                     						<input type="radio" name="summary" id="optionsRadios4"  value="不称职">&nbsp;不称职
+                     				</label>
+                     			</td>
+                     		</tr>
+                     	</tbody>
+                     </table>
+                     
+                         <div class="clear" style="height: 15px;margin-top: 20px;">   
+
+                        <div class="fanhui">
+                        <a  href="{:url('checklst',array('id'=>$tableid))}" class="btn btn-default">返回</a>
+                        </div>
+                        
+                     	<div class="col-md-8 col-sm-offset-2 text-center">
+
+                        <button type="submit" class="btn btn-info ">提交</button>
+                        
+                     		
+                     		<!--<button type="button" class="btn btn-info ">下一个</button>-->
+
+                     	</div>
+                         
+                            
+                           
+                        
+                        </form>
+                </div>
+                {/if}
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+			
+	</div>
+		<script>
+	    $('#file-fr').fileinput({
+	        language: 'fr',
+	        uploadUrl: '#',
+	        allowedFileExtensions : ['jpg', 'png','gif'],
+	    });
+	    $('#file-es').fileinput({
+	        language: 'es',
+	        uploadUrl: '#',
+	        allowedFileExtensions : ['jpg', 'png','gif'],
+	    });
+	    $("#file-0").fileinput({
+	        'allowedFileExtensions' : ['jpg', 'png','gif'],
+	    });
+	    $("#file-1").fileinput({
+	        uploadUrl: '#', // you must set a valid URL here else you will get an error
+	        allowedFileExtensions : ['jpg', 'png','gif'],
+	        overwriteInitial: false,
+	        maxFileSize: 1000,
+	        maxFilesNum: 10,
+	        //allowedFileTypes: ['image', 'video', 'flash'],
+	        slugCallback: function(filename) {
+	            return filename.replace('(', '_').replace(']', '_');
+	        }
+		});
+	    /*
+	    $(".file").on('fileselect', function(event, n, l) {
+	        alert('File Selected. Name: ' + l + ', Num: ' + n);
+	    });
+	    */
+		$("#file-3").fileinput({
+			showUpload: false,
+			showCaption: false,
+			browseClass: "btn btn-primary btn-lg",
+			fileType: "any",
+	        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>"
+		});
+		$("#file-4").fileinput({
+			uploadExtraData: {kvId: '10'}
+		});
+	    $(".btn-warning").on('click', function() {
+	        if ($('#file-4').attr('disabled')) {
+	            $('#file-4').fileinput('enable');
+	        } else {
+	            $('#file-4').fileinput('disable');
+	        }
+	    });    
+	    $(".btn-info").on('click', function() {
+	        $('#file-4').fileinput('refresh', {previewClass:'bg-info'});
+	    });
+	    /*
+	    $('#file-4').on('fileselectnone', function() {
+	        alert('Huh! You selected no files.');
+	    });
+	    $('#file-4').on('filebrowse', function() {
+	        alert('File browse clicked for #file-4');
+	    });
+	    */
+	    $(document).ready(function() {
+	        $("#test-upload").fileinput({
+	            'showPreview' : false,
+	            'allowedFileExtensions' : ['jpg', 'png','gif'],
+	            'elErrorContainer': '#errorBlock'
+	        });
+	        /*
+	        $("#test-upload").on('fileloaded', function(event, file, previewId, index) {
+	            alert('i = ' + index + ', id = ' + previewId + ', file = ' + file.name);
+	        });
+	        */
+	    });
+		</script>
+	    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+
+    <script type="text/javascript" src="__ADMIN__/style/jquery.js"></script> 
+    <script type="text/javascript" src="__ADMIN__/style/jquery.cityselect.js"></script> 
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <script src="__ADMIN__/js/jquery.min.js"></script> 
+    <script src="__ADMIN__/style/distpicker.data.js"></script>
+    <script src="__ADMIN__/style/distpicker.js"></script>
+    <script src="__ADMIN__/style/style.js"></script>
+    <script src="__ADMIN__/js/amazeui.min.js"></script>
+<script src="__ADMIN__/js/app.js"></script>
+        <script src="__ADMIN__/style/fileinput.js" type="text/javascript"></script>
+	<script src="__ADMIN__/style/fileinput_locale_fr.js" type="text/javascript"></script>
+	<script src="__ADMIN__/style/fileinput_locale_es.js" type="text/javascript"></script>
+</body></html>

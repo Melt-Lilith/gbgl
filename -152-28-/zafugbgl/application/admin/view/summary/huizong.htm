@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>干部考核和信息管理系统</title>
+<meta name="description" content="Dashboard">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--Basic Styles-->
+<link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+<link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+<link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+<!--Beyond styles-->
+<link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+<link href="__ADMIN__/style/demo.css" rel="stylesheet">
+<link href="__ADMIN__/style/style.css" rel="stylesheet">
+<link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+<link href="__ADMIN__/style/animate.css" rel="stylesheet">
+<link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+<link href="__ADMIN__/style/admin.css" rel="stylesheet">
+<link href="__ADMIN__/style/app.css" rel="stylesheet">
+</head>
+<body>
+<!-- 头部 --> 
+{include file="public/top" /} 
+<!-- /头部 -->
+<div class="tpl-page-container tpl-page-header-fixed"> 
+  <!-- Page Sidebar --> 
+  {include file="public/left" /} 
+  <!-- /Page Sidebar --> 
+  <!-- Page Content -->
+  <div class="tpl-content-wrapper"> 
+    <!-- Page Breadcrumb -->
+    <div>
+      <ol class="breadcrumb">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">信息汇总</a></li>
+        <li class="active">测评结果汇总表</li>
+      </ol>
+    </div>
+    <!-- /Page Breadcrumb --> 
+    
+    <!-- Page Body -->
+    <div class="page-body">
+      <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+          <div class="widget">
+            <div class="widget-body">
+              <div class="widget-body1">
+                <div class="flip-scroll">
+                  <table class="table table-bordered table-hover xa-huizong-table">
+                    <h1>{$artres[0]['checkname']}结果汇总</h1>
+                    <caption class="biaotoubiaoti">
+                    开始时间：{$tableinf['timestart']}&nbsp;&nbsp;结束时间：{$tableinf['timeend']}
+                    </caption>
+                    <thead class="">
+                      <tr>
+                        <th class="text-center" rowspan="2">姓名</th>
+                        <th class="text-center" rowspan="2">有<br/>效<br/>票</th>
+                        <th class="text-center" colspan="10">民主测评表</th>
+                        <th class="text-center" colspan="10">德的考核考察评价测评表</th>
+                        <th class="text-center" rowspan="2">负面评价</th>
+                        <th class="text-center" rowspan="2">民主总评</th>
+                        <th class="text-center" rowspan="2">德的总评</th>
+                      </tr>
+                      <tr>
+                        <th class="text-center" colspan="2">能</th>
+                        <th class="text-center" colspan="2">勤</th>
+                        <th class="text-center" colspan="2">绩</th>
+                        <th class="text-center" colspan="2">廉</th>
+                        <th class="text-center" colspan="2">总体评价</th>
+                        <th class="text-center" colspan="2">政治品德</th>
+                        <th class="text-center" colspan="2">职业道德</th>
+                        <th class="text-center" colspan="2">社会公德</th>
+                        <th class="text-center" colspan="2">家庭美德</th>
+                        <th class="text-center" colspan="2">总体评价</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="artres" id="a"}
+                    <tr>
+                      <td align="center" rowspan="6">{$a.name}</td>
+                      <td align="center" rowspan="6">{$a.mingzhuvotenum}</td>
+                      
+
+                    </tr>
+                    <tr>
+                      <td>好</td>
+                      <td>{$a.neng.hao}</td>
+                      <td>好</td>
+                      <td>{$a['qin']['hao']}</td>
+                      <td>好</td>
+                      <td>{$a['ji']['hao']} </td>
+                      <td>好</td>
+                      <td>{$a['lian']['hao']} </td>
+                      <td>优秀</td>
+                      <td>{$a['summary']['youxiu']} </td>
+
+                      <td>好</td>
+                      <td>{$a['zzde']['hao'] }</td>
+                      <td>好</td>
+                      <td>{$a['shde']['hao']} </td>
+                      <td>好</td>
+                      <td>{$a['zyde']['hao']} </td>
+                      <td>好</td>
+                      <td>{$a['jtde']['hao']} </td>
+                      <td>好</td>
+                      <td>{$a['summary2']['hao']} </td>
+                         <!-- 负面评价 民主总评 德的总评 -->
+                      <td rowspan="5"></td>
+                      <td rowspan="5"></td>
+                      <td rowspan="5"></td>
+                       </tr>
+                     <tr>  
+                      <td>较好</td>
+                      <td>{$a['neng']['jiaohao']}</td>
+                      <td>较好</td>
+                      <td>{$a['qin']['jiaohao']} </td>
+                      <td>较好</td>
+                      <td>{$a['ji']['jiaohao']} </td>
+                      <td>较好</td>
+                      <td>{$a['lian']['jiaohao']} </td>
+                      <td>称职</td>
+                      <td>{$a['summary']['chenzhi']} </td>
+
+                      <td>较好</td>
+                      <td>{$a['zzde']['jiaohao']} </td>
+                      <td>较好</td>
+                      <td>{$a['zyde']['jiaohao']}  </td>
+                      <td>较好</td>
+                      <td>{$a['shde']['jiaohao']}  </td>
+                      <td>较好</td>
+                      <td>{$a['jtde']['jiaohao']}  </td>
+                      <td>较好</td>
+                      <td>{$a['summary2']['jiaohao']}  </td>
+                       </tr>
+                       <tr>
+                      <td>一般</td>
+                      <td>{$a['neng']['yiban']}  </td>
+                      <td>一般</td>
+                      <td>{$a['qin']['yiban']}  </td>
+                      <td>一般</td>
+                      <td>{$a['ji']['yiban']}  </td>
+                      <td>一般</td>
+                      <td>{$a['lian']['yiban']}  </td>
+                      <td>基本称职</td>
+                      <td>{$a['summary']['jibenchenzhi']}  </td>
+
+                      <td>一般</td>
+                      <td>{$a['zzde']['yiban']}  </td>
+                      <td>一般</td>
+                      <td>{$a['zyde']['yiban']} </td>
+                      <td>一般</td>
+                      <td>{$a['shde']['yiban']}  </td>
+                      <td>一般</td>
+                      <td>{$a['jtde']['yiban']}  </td>
+                      <td>一般</td>
+                      <td>{$a['summary2']['yiban']}  </td>
+                       </tr>
+                       <tr>
+                      <td>差</td>
+                      <td>{$a['neng']['cha']} </td>
+                      <td>差</td>
+                      <td>{$a['qin']['cha']} </td>
+                      <td>差</td>
+                      <td>{$a['ji']['cha']} </td>
+                      <td>差</td>
+                      <td>{$a['lian']['cha']} </td>
+                      <td>不称职</td>
+                      <td>{$a['summary']['buchenzhi']} </td>
+
+                      <td>差</td>
+                      <td>{$a['zzde']['cha']} </td>
+                      <td>差</td>
+                      <td>{$a['zyde']['cha']} </td>
+                      <td>差</td>
+                      <td>{$a['shde']['cha']} </td>
+                      <td>差</td>
+                      <td>{$a['jtde']['cha']} </td>
+                      <td>差</td>
+                      <td>{$a['summary2']['cha']} </td>
+                       </tr>
+                     <tr>
+                      <td> </td>
+                      <td> </td>
+                      <td> </td>
+                      <td> </td>
+                      <td> </td>
+                      <td> </td>
+                      <td> </td>
+                      <td> </td>
+                      <td> </td>
+                      <td> </td>
+
+                      <td>不了解</td>
+                      <td>{$a['zzde']['buliaojie']}</td>
+                      <td>不了解</td>
+                      <td>{$a['zyde']['buliaojie']} </td>
+                      <td>不了解</td>
+                      <td>{$a['shde']['buliaojie']} </td>
+                      <td>不了解</td>
+                      <td>{$a['jtde']['buliaojie']} </td>
+                      <td>不了解</td>
+                      <td>{$a['summary2']['buliaojie']} </td>
+                    </tr>
+                    {/volist}
+                      </tbody>
+                   
+                    
+                  </table>
+                  <div class="fanhui"><a href="{:url('summary/summary',array('id'=>$artres[0]['tableid']))}" class="btn btn-default">返回</a></div>
+                </div>
+                <div> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Page Body --> 
+  </div>
+  <!-- /Page Content --> 
+  
+</div>
+
+<!--Basic Scripts--> 
+<script src="__ADMIN__/style/jquery_002.js"></script> 
+<script src="__ADMIN__/style/bootstrap.js"></script> 
+<script src="__ADMIN__/style/jquery.js"></script> 
+<script src="__ADMIN__/js/jquery.min.js"></script> 
+<!--Beyond Scripts--> 
+<script src="__ADMIN__/style/beyond.js"></script> 
+<script src="__ADMIN__/js/amazeui.min.js"></script> 
+<script src="__ADMIN__/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>干部考核与信息管理系统</title>
+    <style type="text/css">
+		div#sz{
+			
+			
+		}
+	</style>
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    <link href="__ADMIN__/style/style.css" rel="stylesheet">
+    <link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+    <link href="__ADMIN__/style/admin.css" rel="stylesheet">
+    <link href="__ADMIN__/style/app.css" rel="stylesheet">
+
+        <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <script src="__ADMIN__/js/jquery.min.js"></script>
+    <!--Beyond Scripts-->
+</head>
+<body>
+	<!-- 头部 -->
+	{include file="public/top"} 
+    <!-- /头部 -->
+    
+<div class="tpl-page-container tpl-page-header-fixed">
+                        <!-- Page Sidebar -->
+           {include file="public/left"} 
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="tpl-content-wrapper">
+                <!-- Page Breadcrumb -->
+               <div>
+        <ol class="breadcrumb">
+          <li><a href="#">首页</a></li>
+          <li><a href="#">干部测评</a></li>
+          <li class="active">民主测评</li>
+        </ol>
+      </div>
+                <!-- /Page Breadcrumb -->
+              <div class="page-body">
+               <div class="row">
+                   <div class="col-lg-12 col-sm-12 col-xs-12">
+                       <div class="widget-header1 bordered-bottom bordered-blue xa-widget-header">
+                               <div class="chazhaojz"><span class="widget-caption">关键字:</span></div>
+                                <form class="form-horizontal" role="form" action="__index__/index.php/admin/ceping/lst1" method="post" enctype="multipart/form-data">
+                               <div class="col-lg-2 col-sm-3 col-xs-3 chazhaojz">
+                                       <select name="status" style="width: 100%; margin-bottom: 3px;">
+	                                    <option selected="selected" value="8">请选择</option>
+	                                       <option value="1" >已测评</option>
+	                                       
+	                                       <option value="2">未测评</option>
+	                                       
+	                                       <option value="3">已过期</option>
+                                           <option value="4">未开启</option>
+                                       </select>
+                                </div>
+                            <input type="submit" value="查找"  class="btn btn-default fudong">
+                           </div>
+                        </form>
+                           <div class="widget-body1">
+                               <div id="horizontal-form">
+                                <table class="table table-bordered  table-hover table-condensed text-center" id="wxf-text-center">
+                              <!--     <h1><b>民主测评</b></h1>-->
+                                    <thead>
+                                        <tr>
+                                           
+                                            <th>ID</th>
+                                           
+											                       <th>开始时间</th>
+                                            <th>结束时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody  id="list">
+                                     {volist name="artres" id="art"}
+                                        <tr>
+                                        	<label>
+                                           
+                                           
+                                            <td>{$art.name} </td>
+                                            <td>{$art.timestart} </td>
+                                            <td>{$art.timeend}</td>
+											
+                                            {if($art.status=="3")}
+                                            <td class="cepinganniu2" >
+                                                <a href="#" class="btn btn-warning btn-sm shiny disabled">
+                                                   <i ></i> 已过期
+                                                </a>
+                                            </td>
+                                            {elseif($art.status=="4")}
+                                            <td class="cepinganniu1" >
+                                                <a href="#" class="btn btn-success btn-sm shiny">
+                                                  <i></i> 未开启
+                                                </a>
+                                            </td>
+                                            {elseif($art.status=="1")}
+                                             <td class="cepinganniu1" >
+                                                <a href="#" class="btn btn-success btn-sm shiny">
+                                                  <i></i> 已测评
+                                                </a>
+                                            </td>
+                                                {else/}
+                                            <td class="cepinganniu3" >
+                                                <a href="{:url('checklst',array('id'=>$art['id']))}"  class="btn btn-primary btn-sm shiny">
+                                                   <i class="fa fa-edit">   </i>   测评
+                                                </a>
+                                            </td>
+                                            {/if}
+                                        </tr>
+                                      {/volist}
+                                      
+                                    </tbody>
+                                   
+                                </table>
+                                <!--手机-->
+                                <table  class="table table-bordered  table-hover table-condensed text-center" id="wuxiaofa-text-center">
+                              <!--  <h1><b>民主测评</b></h1>-->
+                                <thead>
+                                        <tr>
+                                            <th>调查表名称</th>
+                                            <th>起止时间</th>
+                                            </tr>
+                                    </thead>
+                                    <tbody>
+                                     
+                                        {volist name="artres" id="art"}
+                                        <tr>
+                                          <label>
+                                           
+                                            <td>{$art.name} </td>
+                                            <td>{$art.timestart}--{$art.timeend}</td>
+                                            
+                         </tbody>
+                                        </table>
+                                            {if($art.status=="3")}
+                                             <div class="wuxiaofa" id="wuxia-text-center" style="margin-top:10px;">
+                                           <a href="#"  class="btn btn-warning btn-block shiny" style="height: 40px;">
+                                              <i class="fa fa-edit" style="line-height:25px;"></i>已过期
+                                                </a></div>
+                                            {elseif($art.status=="4")}
+                                             <div class="wuxiaofa" id="wuxia-text-center" style="margin-top:10px;">
+                                           <a href="#"  class="btn btn-success btn-block shiny" style="height: 40px;">
+                                              <i class="fa fa-edit" style="line-height:25px;"></i>未开启
+                                                </a></div>
+                                            {elseif($art.status=="1")}
+                                              <div class="wuxiaofa" id="wuxia-text-center" style="margin-top:10px;">
+                                           <a href="#"  class="btn btn-success btn-block shiny" style="height: 40px;">
+                                              <i class="fa fa-edit" style="line-height:25px;"></i>已测评
+                                                </a></div>
+                                                {else/}
+                                             <div class="wuxiaofa" id="wuxia-text-center" style="margin-top:10px;">
+                                           <a href="{:url('checklst',array('id'=>$art['id']))}"  class="btn btn-primary btn-block shiny" style="height: 40px;">
+                                              <i class="fa fa-edit" style="line-height:25px;"></i>测评
+                                                </a></div>
+                                            {/if}
+                                        </tr>
+                                      {/volist}
+                  <div class="sz" align="center">
+                                {$artres->render()}
+                                </div>
+                                </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               </div>
+        
+            <!-- /Page Content -->
+    </div> 
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <script src="__ADMIN__/js/amazeui.min.js"></script>
+    <script src="__ADMIN__/js/app.js"></script>
+    
+
+
+</body></html>

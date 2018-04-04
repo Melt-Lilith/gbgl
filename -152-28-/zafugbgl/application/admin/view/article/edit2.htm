@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>干部考核与信息管理系统</title>
+<meta name="description" content="Dashboard">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--Basic Styles-->
+<link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+<link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+<link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+<!--Beyond styles-->
+<link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+<link href="__ADMIN__/style/demo.css" rel="stylesheet">
+<link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+<link href="__ADMIN__/style/animate.css" rel="stylesheet">
+<link href="__ADMIN__/style/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__/style/style.css" rel="stylesheet">
+<link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+<link href="__ADMIN__/style/admin.css" rel="stylesheet">
+<link href="__ADMIN__/style/app.css" rel="stylesheet">
+</head>
+<body>
+<!-- 头部 --> 
+{include file="public/top" /} 
+<!-- /头部 -->
+<div class="tpl-page-container tpl-page-header-fixed"> 
+    <!-- Page Sidebar --> 
+    {include file="public/left" /} 
+    <!-- /Page Sidebar --> 
+    <!-- Page Content -->
+    <div class="tpl-content-wrapper"> 
+      <!-- Page Breadcrumb -->
+      <div>
+        <ol class="breadcrumb">
+          <li><a href="#">首页</a></li>
+          <li><a href="#">干部信息管理</a></li>
+          <li><a href="#">干部信息查看</a></li>
+          {if $app}<li class="active">信息修改审核</li>{else/}  <li class="active">编辑</li>{/if}
+        </ol>
+      </div>
+      <!-- /Page Breadcrumb --> 
+      
+      <!-- Page Body -->
+      <div class="page-body">
+        <div class="row">
+          <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="widget">
+              <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">{if $app}干部信息修改审核{else/}干部信息编辑{/if}</span>
+              </div>
+              <div class="widget-body">
+                <div class="btn-wrap">
+              <div class="btn-group btn-group-justified">
+              {if $app}
+                <h1><b>教育信息修改审核</b></h1>
+              {else/}
+             <a class="btn btn-default" href="__index__/index.php/admin/Article/edit/id/{$id}">基本信息&nbsp;&nbsp;&nbsp;</a>
+             <a class="btn btn-info" href="__index__/index.php/admin/Article/edit2/id/{$id}">教育&nbsp;&nbsp;&nbsp;</a>
+              <a class="btn btn-default" href="__index__/index.php/admin/Article/edit3/id/{$id}">简历&nbsp;&nbsp;&nbsp;</a>
+             <a class="btn btn-default" href="__index__/index.php/admin/Article/edit4/id/{$id}">家庭信息&nbsp;&nbsp;&nbsp;</a>
+             {/if}
+             </div>
+              </div>
+              <div class="widget-body1">
+                <div id="horizontal-form">
+                  <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data" >
+                    <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label" style="font-size: 17px;">全日制教育</label>
+                      
+                    </div>
+              
+                   {if $app}
+                   <div class="am-u-md-6 am-u-sm-12 row-mb">
+                      <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label">毕业院校</label>
+                      <div class="col-sm-6">
+                        <p  style="padding-top: 6px;margin:0;">{$arts.qschool}</p>
+                      </div>
+                    </div>
+                
+                    <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label"> 毕业专业</label>
+                      <div class="col-sm-6">
+                         <p  style="padding-top: 6px;margin:0;">{$arts.qzhuanye}</p>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label">学历</label>
+                      <div class="col-sm-6">
+                         <p  style="padding-top: 6px;margin:0;">{$arts.qedubg}</p>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label">学位</label>
+                      <div class="col-sm-6">
+                        <p  style="padding-top: 6px;margin:0;">{$arts.qdegree}</p>
+                      </div>
+                    </div>
+                    </div>
+                   
+
+                   <div class="am-u-md-6 am-u-sm-12 row-mb">
+                     <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label">毕业院校</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="work" placeholder="" value="{$arts1.qschool}" name="qschool" required="required" type="text">
+                      </div>
+                    </div>
+                
+                    <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label"> 毕业专业</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts1.qzhuanye}" name="qzhuanye" required="required" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label">学历</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts1.qedubg}" name="qedubg" required="required" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label">学位</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts1.qdegree}" name="qdegree" required="required" type="text">
+                      </div>
+                    </div>
+                     </div>
+
+                   <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label" style="font-size: 17px;">在职教育</label>
+                      
+                    </div>
+                    <div class="am-u-md-6 am-u-sm-12 row-mb">
+                     
+                      <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label">毕业院校</label>
+                      <div class="col-sm-6">
+                       <p  style="padding-top: 6px;margin:0;">{$arts.zschool}</p>
+                      </div>
+                    </div>
+               <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label"> 毕业专业</label>
+                      <div class="col-sm-6">
+                        <p  style="padding-top: 6px;margin:0;">{$arts.zzhuanye}</p>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label">学历</label>
+                      <div class="col-sm-6">
+                         <p  style="padding-top: 6px;margin:0;">{$arts.zedubg}</p>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label">学位</label>
+                      <div class="col-sm-6">
+                        <p  style="padding-top: 6px;margin:0;">{$arts.zdegree}</p>
+                      </div>
+                    </div>
+
+                   </div>
+
+
+
+                      <div class="am-u-md-6 am-u-sm-12 row-mb">
+                      <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label">毕业院校</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="work" placeholder="" value="{$arts1.zschool}" name="zschool"  type="text">
+                      </div>
+                    </div>
+               <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label"> 毕业专业</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts1.zzhuanye}" name="zzhuanye"  type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label">学历</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts1.zedubg}" name="zedubg"  type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label">学位</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts1.zdegree}" name="zdegree"  type="text">
+                      </div>
+                    </div>
+                    </div>
+                 
+             
+                      <div style="text-align: center;">
+                        <button type="submit" class="btn btn-default">审核通过</button>
+                        <a href="{:url('reply',array('worknum'=>$arts1.adminid,'type'=>2))}"><button type="button" class="btn btn-default">驳回申请</button></a>
+                      </div>
+            
+                    
+
+                   {else/}
+                    <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label">毕业院校</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="work" placeholder="" value="{$arts.qschool}" name="qschool" required="required" type="text">
+                      </div>
+                    </div>
+                
+                    <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label"> 毕业专业</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts.qzhuanye}" name="qzhuanye" required="required" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label">学历</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts.qedubg}" name="qedubg" required="required" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label">学位</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts.qdegree}" name="qdegree" required="required" type="text">
+                      </div>
+                    </div>
+                      <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label" style="font-size: 17px;">在职教育</label>
+                      
+                    </div>
+                      <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label">毕业院校</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="work" placeholder="" value="{$arts.zschool}" name="zschool"  type="text">
+                      </div>
+                    </div>
+               <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label"> 毕业专业</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts.zzhuanye}" name="zzhuanye"  type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label">学历</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts.zedubg}" name="zedubg"  type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label">学位</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts.zdegree}" name="zdegree"  type="text">
+                      </div>
+                    </div>
+                    
+                 
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">保存信息</button>
+                      </div>
+                    </div>
+                    {/if}
+                  </form>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Page Body --> 
+    </div>
+    <!-- /Page Content --> 
+  
+</div>
+
+<!--Basic Scripts--> 
+<script src="__ADMIN__/style/jquery_002.js"></script> 
+<script src="__ADMIN__/style/bootstrap.js"></script> 
+<script src="__ADMIN__/style/jquery.js"></script> 
+<script src="__ADMIN__/js/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__/style/jquery.js"></script> 
+<script type="text/javascript" src="__ADMIN__/style/jquery.cityselect.js"></script> 
+<!--Beyond Scripts--> 
+<script src="__ADMIN__/style/beyond.js"></script> 
+<script src="__ADMIN__/style/distpicker.data.js"></script> 
+<script src="__ADMIN__/style/distpicker.js"></script> 
+<script src="__ADMIN__/style/style.js"></script> 
+<script src="__ADMIN__/style/fileinput.js" type="text/javascript"></script> 
+<script src="__ADMIN__/style/fileinput_locale_fr.js" type="text/javascript"></script> 
+<script src="__ADMIN__/style/fileinput_locale_es.js" type="text/javascript"></script>
+<script src="__ADMIN__/js/amazeui.min.js"></script>
+<script src="__ADMIN__/js/app.js"></script>
+</body>
+</html>

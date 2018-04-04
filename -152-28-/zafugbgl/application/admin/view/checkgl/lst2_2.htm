@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--进阶的候选部门列表页-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>干部考核与信息管理系统</title>
+  <meta name="description" content="Dashboard">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--Basic Styles-->
+  <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+  <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+  <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+  <!--Beyond styles-->
+  <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+  <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+  <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+  <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+  <link href="__ADMIN__/style/style.css" rel="stylesheet">
+  <link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+  <link href="__ADMIN__/style/admin.css" rel="stylesheet">
+  <link href="__ADMIN__/style/app.css" rel="stylesheet">
+
+  <!--Basic Scripts-->
+  <script src="__ADMIN__/style/jquery_002.js"></script>
+  <script src="__ADMIN__/style/bootstrap.js"></script>
+  <script src="__ADMIN__/style/jquery.js"></script>
+  <script src="__ADMIN__/js/jquery.min.js"></script> 
+  <!--Beyond Scripts-->
+</head>
+<body>
+  <!-- 头部 --> 
+  {include file="public/top"} 
+  <!-- /头部 -->
+<div class="tpl-page-container tpl-page-header-fixed">  
+      <!-- Page Sidebar --> 
+      {include file="public/left"} 
+      <!-- /Page Sidebar --> 
+      <!-- Page Content -->
+      <div class="tpl-content-wrapper"> 
+        <!-- Page Breadcrumb -->
+        <div >
+          <ul class="breadcrumb">
+            <li> <a href="#">首页</a> </li>
+        <li> <a href="#">干部考核管理</a> </li>
+        <li> <a href="#">调查表管理</a> </li>
+        <li class="active">编辑</li>
+          </ul>
+        </div>
+        <!-- /Page Breadcrumb -->
+        <div class="page-body">
+        <div class="row">
+          <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="widget1">
+            <div class="widget-header bordered-bottom bordered-blue"> <span class="widget-caption">编辑部门名单</span> </div>
+              <div class="widget-body1">
+                <div id="horizontal-form">
+                  <table class="table table-bordered  table-hover table-condensed text-center">
+                  <h1><b>选取被投票部门名单</b></h1>
+                    <thead>
+                      <tr>
+                        <th>排序</th>
+                        <th>部门</th>
+                        <th>类别</th>
+                        <th>选择</th>
+                      </tr>
+                    </thead>
+
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                             <div class="sc">
+                       <div class="checkbox" style="padding-top: 1px;">
+                <label><input type="checkbox" name="" value="" id="all">全选</label></div>
+                        <button type="submit" value=""  class="btn btn-default fudong1">生成</button>
+                      </div>
+                      <tbody  id="list">
+
+                        {volist name="department" id="art"}
+                        <tr>
+                          <label>
+                            <td align="center">{$art.sort}</td>
+                            <td>{$art.catename}</td>
+                            <td align="center"> {if condition="$art['type'] eq 1"}
+                              一级部门
+                              {elseif condition="$art['type'] eq 3" }
+                              三级部门
+                              {else /}
+                              二级部门
+                              {/if} </td>
+                              <td>
+
+                                <input type="checkbox" name="{$i}" value="{$art.id}">
+
+
+                              </td>
+                            </label>
+                          </tr>
+                          {/volist}
+                        </tbody>
+
+                      </table>
+
+                
+                    </form>
+                    <script>
+                      $("#all").click(function(){   
+                        if(this.checked){   
+                          $("#list :checkbox").prop("checked", true);  
+                        }else{   
+                          $("#list :checkbox").prop("checked", false);
+                        }   
+                      });
+                    </script>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /Page Content --> 
+      </div>
+      <script src="__ADMIN__/style/beyond.js"></script>
+      <script src="__ADMIN__/js/amazeui.min.js"></script>
+      <script src="__ADMIN__/js/app.js"></script>
+    </body>
+    </html>

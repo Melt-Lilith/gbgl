@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>干部考核与信息管理系统</title>
+<meta name="description" content="Dashboard">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--Basic Styles-->
+<link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+<link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+<link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+<!--Beyond styles-->
+<link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+<link href="__ADMIN__/style/demo.css" rel="stylesheet">
+<link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+<link href="__ADMIN__/style/animate.css" rel="stylesheet">
+<link href="__ADMIN__/style/style.css" rel="stylesheet">
+<link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+<link href="__ADMIN__/style/admin.css" rel="stylesheet">
+<link href="__ADMIN__/style/app.css" rel="stylesheet">
+
+<!--Basic Scripts-->
+<script src="__ADMIN__/style/jquery_002.js"></script>
+<script src="__ADMIN__/style/bootstrap.js"></script>
+<script src="__ADMIN__/style/jquery.js"></script>
+<script src="__ADMIN__/js/jquery.min.js"></script>
+<!--Beyond Scripts-->
+</head>
+<body>
+<!-- 头部 --> 
+{include file="public/top"} 
+<!-- /头部 -->
+<div class="tpl-page-container tpl-page-header-fixed">
+<!-- Page Sidebar --> 
+{include file="public/left"} 
+<!-- /Page Sidebar --> 
+<!-- Page Content -->
+<div class="tpl-content-wrapper">
+{if($artres["0"]["type"]=="班子测评")} 
+<!-- Page Breadcrumb -->
+<div >
+  <ul class="breadcrumb">
+    <li> <a href="#">首页</a> </li>
+    <li> <a href="#">干部考核管理</a> </li>
+    <li> <a href="{:url('checkgl/lst')}">调查表管理</a> </li>
+    <li class="active">查看</li>
+  </ul>
+</div>
+
+<!-- /Page Breadcrumb -->
+<div class="page-body">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+      <div class="widget1">
+        <div class="widget-header bordered-bottom bordered-blue"> <span class="widget-caption">查看部门名单</span> </div>
+        <div class="widget-body1">
+          <div id="horizontal-form">
+            <table class="table table-bordered  table-hover table-condensed text-center">
+              <caption class="biaotoubiaoti">
+              {$artres["0"]["checkname"]}&nbsp;&nbsp;&nbsp;&nbsp;{$artres["0"]["timestart"]}&nbsp;&nbsp;{$artres["0"]["timeend"]}
+              </caption>
+              <thead>
+                <tr>
+                  <th>排序</th>
+                  <th>部门</th>
+                </tr>
+              </thead>
+              <tbody  id="list">
+              
+              {volist name="artres" id="art"}
+              <tr>
+                  <label>
+                <td>{$art.id}</td>
+                  </label>
+                  <label>
+                <td>{$art.catename}</td>
+                  </label>
+              </tr>
+              {/volist}
+                </tbody>
+              
+            </table>
+            <div class="sz"> {$artres->render()} </div>
+            <div class="fanhui"><a href="{:url('checkgl/lst')}" class="btn btn-default">返回</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Page Content --> 
+{else/} 
+<!-- Page Breadcrumb -->
+<div >
+  <ul class="breadcrumb">
+    <li> <a href="#">首页</a> </li>
+    <li> <a href="#">干部考核管理</a> </li>
+    <li> <a href="{:url('checkgl/lst')}">调查表管理</a> </li>
+    <li class="active">查看</li>
+  </ul>
+</div>
+
+<!-- /Page Breadcrumb -->
+<div class="page-body">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+      <div class="widget1">
+        <div class="widget-header bordered-bottom bordered-blue"> <span class="widget-caption">查看干部考核名单</span> </div>
+        <div class="widget-body1">
+          <div class="fanhui"><a href="{:url('checkgl/check1',array('id'=>$artres['0']['sumid']))}" class="btn btn-default">从此表中删除人员</a></div>
+          <div id="horizontal-form">
+            <table class="table table-bordered  table-hover table-condensed text-center">
+              <caption class="biaotoubiaoti">
+              {$artres["0"]["checkname"]}&nbsp;&nbsp;&nbsp;&nbsp;{$artres["0"]["timestart"]}&nbsp;&nbsp;{$artres["0"]["timeend"]}
+              </caption>
+              <thead>
+                <tr>
+                  <th>排序</th>
+                  <th>工号</th>
+                  <th>姓名</th>
+                  <th>职务</th>
+                  <th>类别</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody  id="list">
+              
+              {volist name="artall" id="art"}
+              <tr>
+                  <label>
+                <td align="center">{$art.sort}</td>
+                <td>{$art.worknum}</td>
+                <td><a href="#">{$art.name}</a></td>
+                <td>{$art.job}</td>
+                <td>{$art["type"]}</td>
+                <td><a href="{:url('add1',array('worknum'=>$art.worknum,'sumid'=>$id))}" class="btn btn-primary btn-sm shiny"> <i class="fa fa-edit"></i> 添加 </a></td>
+                  </label>
+              </tr>
+              {/volist}
+                </tbody>
+              
+            </table>
+            <div class="fanhui"><a href="{:url('checkgl/lst')}" class="btn btn-default">返回</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Page Content --> 
+  {/if} </div>
+<script src="__ADMIN__/style/beyond.js"></script> 
+<script src="__ADMIN__/js/amazeui.min.js"></script> 
+<script src="__ADMIN__/js/app.js"></script>
+</body>
+</html>

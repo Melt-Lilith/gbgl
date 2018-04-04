@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>干部考核与信息管理系统</title>
+<meta name="description" content="Dashboard">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--Basic Styles-->
+<link href="__ADMIN__/style/normalize.css" rel="stylesheet">
+<link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+<link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+<link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+<!--Beyond styles-->
+<link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+<link href="__ADMIN__/style/demo.css" rel="stylesheet">
+<link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+<link href="__ADMIN__/style/animate.css" rel="stylesheet">
+<link href="__ADMIN__/style/style.css" rel="stylesheet">
+<link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+<link href="__ADMIN__/style/admin.css" rel="stylesheet">
+<link href="__ADMIN__/style/app.css" rel="stylesheet">
+
+<!--Basic Scripts-->
+<script src="__ADMIN__/style/jquery_002.js"></script>
+<script src="__ADMIN__/style/bootstrap.js"></script>
+<script src="__ADMIN__/style/jquery.js"></script>
+<script src="__ADMIN__/js/jquery.min.js"></script> 
+<!--Beyond Scripts-->
+</head>
+<body>
+<!-- 头部 --> 
+{include file="public/top"} 
+<!-- /头部 -->
+
+<div class="tpl-page-container tpl-page-header-fixed">
+  <!-- Page Sidebar --> 
+  {include file="public/left"} 
+  <!-- /Page Sidebar --> 
+  <!-- Page Content -->
+  <div class="tpl-content-wrapper"> 
+    <!-- Page Breadcrumb -->
+    <div>
+        <ol class="breadcrumb">
+          <li><a href="#">首页</a></li>
+          <li><a href="#">干部信息管理</a></li>
+          <li class="active">修改信息审核</li>
+        </ol>
+      </div>
+    <!-- /Page Breadcrumb -->
+    <div class="page-body">
+    <div class="row">
+
+      <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+          
+          <div class="widget-body1">
+            <div id="horizontal-form">
+            
+            <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+            <div class="sc">
+                <div class="checkbox" style="padding-top: 3px;">
+                <label><input type="checkbox" name="" value="" id="all">全选</label></div>
+                <button type="submit"  class="btn btn-default fudong1">通过</button>
+                </div>
+
+              <table class="table table-bordered  table-hover table-condensed text-center">
+                <thead>
+                  <tr>
+                    <th width="10%">工号</th>
+                    <th width="10%">姓名</th>
+                    <th width="20%">部门</th>
+                    
+                    <th width="30%">申请</th>
+                   
+                    <th width="20%">操作</th>
+                    <th width="5%">选择</th>
+                  </tr>
+                </thead>
+                
+                {if isset($artres)}
+                <tbody  id="list">
+                
+                {volist name="artres" id="art"}
+                <tr>
+                    <label>
+                  <td>{$art.adminid}</td>
+                  <td>{$art.name}</td>
+                  <td>{$art.cate}</td>
+                 
+                  <td style="text-align:left; ">{if $art.type==1}基本信息修改申请{elseif $art.type==2}教育情况修改申请{elseif $art.type==3}简历信息修改申请{elseif $art.type==4}家庭信息修改申请{/if}</td>
+                 
+                  <td align="center">
+                  <a {if $art.type==1}href="{:url('edit',array('id'=>$art['id'],'app'=>1))}"{elseif $art.type==2}href="{:url('edit2',array('id'=>$art['id'],'app'=>1))}"{elseif $art.type==3}href="{:url('edit3',array('id'=>$art['id'],'app'=>1))}"{elseif $art.type==4}href="{:url('edit4',array('id'=>$art['id'],'app'=>1))}"{/if} class="btn btn-primary btn-sm shiny"> <i class="fa fa-edit"></i>&nbsp; 审核 </a>  
+                    </td>
+
+                    <td>
+                     
+                      <input type="checkbox" name="{$i}[id]" value="{$art.aid}">
+                   <!--   <input type="checkbox" name="{$i}[type]" value="{$art.type}"> -->
+                    </td>
+                    </label>
+                </tr>    
+                {/volist}
+                {/if}
+                  </tbody>
+                
+              </table>
+              
+              
+              </form>
+          
+              <script>
+                                        	$("#all").click(function(){   
+                                        	    if(this.checked){   
+                                        	        $("#list :checkbox").prop("checked", true);  
+                                        	    }else{   
+                                        		$("#list :checkbox").prop("checked", false);
+                                        	    }   
+                                        	});
+              </script>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  
+  <!-- /Page Content --> 
+</div>
+<script src="__ADMIN__/style/beyond.js"></script>
+<script src="__ADMIN__/js/amazeui.min.js"></script>
+<script src="__ADMIN__/js/app.js"></script>
+</body>
+</html>

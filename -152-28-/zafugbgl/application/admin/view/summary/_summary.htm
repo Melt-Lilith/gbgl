@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>干部考核与信息管理系统</title>
+<meta name="description" content="Dashboard">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--Basic Styles-->
+<link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+<link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+<link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+<!--Beyond styles-->
+<link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+<link href="__ADMIN__/style/demo.css" rel="stylesheet">
+<link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+<link href="__ADMIN__/style/animate.css" rel="stylesheet">
+<link href="__ADMIN__/style/style.css" rel="stylesheet">
+<link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+<link href="__ADMIN__/style/admin.css" rel="stylesheet">
+<link href="__ADMIN__/style/app.css" rel="stylesheet">
+
+<!--Basic Scripts-->
+<script src="__ADMIN__/style/jquery_002.js"></script>
+<script src="__ADMIN__/style/bootstrap.js"></script>
+<script src="__ADMIN__/style/jquery.js"></script>
+<script src="__ADMIN__/js/jquery.min.js"></script> 
+<!--Beyond Scripts-->
+</head>
+<body>
+<!-- 头部 --> 
+ {include file="public/top"} 
+<!-- /头部 -->
+<div class="tpl-page-container tpl-page-header-fixed"> 
+  <!-- Page Sidebar --> 
+  {include file="public/left"} 
+  <!-- /Page Sidebar --> 
+  <!-- Page Content -->
+  <div class="tpl-content-wrapper"> 
+    
+
+    {if($artres["0"]["type"]=="班子测评")}
+    <!-- Page Breadcrumb -->
+    <div >
+      <ul class="breadcrumb">
+        <li> <a href="#">主页</a> </li>
+        <li> <a href="#">信息汇总</a> </li>
+
+        <li class="active">汇总</li>
+      </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <div class="page-body">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget1">    
+        <div class="widget-header bordered-bottom bordered-blue"> <span class="widget-caption">汇总</span> </div>      
+          <div class="widget-body1">
+            <div id="horizontal-form">
+              <table class="table table-bordered  table-hover table-condensed text-center">
+              <caption class="biaotoubiaoti">{$artres["0"]["checkname"]}&nbsp;&nbsp;&nbsp;&nbsp;{$artres["0"]["timestart"]}&nbsp;&nbsp;{$artres["0"]["timeend"]}</caption>
+                <thead>
+                  <tr>
+                    <th>部门</th>
+                    <th>优秀</th>
+                    <th>良好</th>
+                    <th>合格</th>
+                    <th>不合格</th>
+                  </tr>
+                </thead>
+                
+                
+                <tbody  id="list">
+                
+                {volist name="artres" id="art"}
+                <tr>
+                    <label>
+                  <td>{$art.catename}</td>
+                  <td>{$art.data1}</td>
+                  <td>{$art.data2}</td>
+                  <td>{$art.data3}</td>
+                  <td>{$art.data4}</td>
+                    </label>
+                </tr>
+                {/volist}
+                  </tbody>
+                
+              </table>
+              <div class="fanhui"><a href="{:url('summary/gerenlst')}" class="btn btn-default">返回</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- /Page Content --> 
+    {else/}
+    <!-- Page Breadcrumb -->
+    <div >
+      <ul class="breadcrumb">
+        <li> <a href="#">首页</a> </li>
+        <li> <a href="#">信息汇总</a> </li>
+        <li class="active">汇总</li>
+      </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <div class="page-body">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget1"> 
+        <div class="widget-header bordered-bottom bordered-blue"> <span class="widget-caption">汇总</span> </div>         
+          <div class="widget-body1">
+            <div id="horizontal-form">
+              <table class="table table-bordered  table-hover table-condensed text-center">
+              <caption class="biaotoubiaoti">{$artres["0"]["checkname"]}&nbsp;&nbsp;&nbsp;&nbsp;{$artres["0"]["timestart"]}&nbsp;&nbsp;{$artres["0"]["timeend"]}</caption>
+                <thead>
+                  <tr>
+                    <th>排序</th>
+                    <th>工号</th>
+                    <th>姓名</th>
+                    <th>投票率</th>
+                    <th>总评</th>
+                  </tr>
+                </thead>
+                
+                
+                <tbody  id="list">
+                
+                {volist name="artres" id="art"}
+                <tr>
+                    <label>
+                  <td align="center">{$i}</td>   <!--$i from 1 to +++++  $key from 0 to +++++ -->
+                  <td>{$art.worknum}</td>
+                  <td><a href="#">{$art.name}</a></td>
+                  <td>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-info" style="width: {$art.percents}%;">
+                        {$art.percents}%
+                      </div>
+                    </div>
+                  </td>
+                  <td>{$art.data1}</td>
+              
+                    </label>
+                </tr>
+                {/volist}
+                  </tbody>
+                
+              </table>
+              <div class="fanhui"><a href="{:url('summary/gerenlst')}" class="btn btn-default">返回</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>
+ </div>
+  <!-- /Page Content --> 
+  {/if}
+</div>
+</div>
+<script src="__ADMIN__/style/beyond.js"></script>
+<script src="__ADMIN__/js/amazeui.min.js"></script>
+<script src="__ADMIN__/js/app.js"></script>
+</body>
+</html>

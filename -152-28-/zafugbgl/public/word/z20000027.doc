@@ -1,0 +1,274 @@
+<html><head>
+<meta charset="utf-8">
+<title>干部任免审批表</title>
+<style>
+	tr{
+		border:1px solid #333;
+	}
+	text{font-size:"12px"；color:"blue";}
+  p{font-family:"宋体,sans-serif"; padding:0px 0;line-height:15px;}
+  td{border-right: solid 1px;border-bottom: solid 1px;padding:0px 0px 0px 0px;}
+</style>
+<script>
+function btnPrintClick(){ 
+   var temp = document.createElement("form");
+  temp.action ="";
+  temp.method = "post";
+  temp.style.display = "none";
+    var opt = document.createElement("textarea");
+    opt.name = "x";
+    opt.id="opt"
+    temp.appendChild(opt);
+  document.body.appendChild(temp);
+  document.getElementById("opt").innerHTML=document.documentElement.innerHTML;
+  //console.log(document.documentElement.innerHTML);
+  temp.submit();
+  return temp;
+    }  
+</script>
+</head>
+
+<body>
+<!-- <form id="formid" role="form" action="" method="post" >
+<input type="hidden" name="html" id="html1" /> -->
+ <input id="btnPrint" value="打印" type="button" onclick="btnPrintClick()">
+ <!-- </form>  --> 
+  
+  <h2 align="center">干部详细资料表</h2><table width="794px" border="1" cellspacing="0" align="center" cellpadding="0"> <tbody><tr></tr>
+   <tr height="20px">
+  	 <td align="center">姓名</td>
+  	 <td align="center">陈培金</td>
+  	 <td align="center">性别 </td>
+  	 <td align="center">男 </td>
+  	 <td align="center"> 出生年月<br>（岁）<p></p></td>
+  	 <td align="center">1977-05<br>（40岁）<p></p></td>
+       <td rowspan="4" width="150px"><img align="center" src="http://192.168.20.185/gbgl/public/static/admin/images/zgszp.jpg" width="150px" height="202px" alt=""></td>
+
+      </tr>
+       <tr height="40px">
+  		 <td align="center">民族</td>
+  	<td align="center"></td>
+  	<td align="center">籍贯</td>
+  	<td align="center">浙江杭州</td>
+  	<td colspan="1" align="center">出生地</td>
+    <td align="center">浙江杭州</td>
+        
+      </tr>
+       <tr>
+  		 <td align="center">入党<br>时间</td>
+  		 <td align="center">1998-10</td>
+  		 <td align="center">参加工<br>作时间</td>
+  		 <td align="center">2000-08</td>
+  		 <td colspan="1" align="center">健康状况</td>
+  		 <td align="center">健康</td>
+        
+      </tr>
+       <tr>
+  		 <td align="center">专业技<br>术职务</td>
+  		 <td colspan="2" align="center">讲师</td>
+  		 <td align="center">熟悉专业<br>有何专长</td>
+  		 <td colspan="2" align="center">森林经理</td>
+
+      </tr>
+      <tr height="40px" line-height="5px"> 
+  		<td rowspan="2" align="center">学   历<br>学   位</td>
+  		<td align="center">全日制<br>教  育</td>
+  		<td colspan="2"></td>
+  		<td align="center">毕业院校<br>系及专业</td>
+          <td colspan="4" align="center">  			<br>  </td>
+          
+       
+      </tr>
+      <tr height="40px" line-height="10px">
+  		<td align="center">在　职<br>教　育</td>
+  		<td colspan="2" align="center"></td>
+  		<td align="center">毕业院校<br>系及专业</td>
+  		<td colspan="3" align="center"></td>
+          
+      </tr>
+      <tr height="45px">
+            
+  		<td colspan="2" align="center">现  任  职  务</td>
+  		<td colspan="6" align="center">学校办公室副主任 </td>
+          
+      </tr>
+       <tr height="45px">
+            
+  		 <td colspan="2" align="center">拟  任  职  务</td>
+          <td colspan="6" align="center"></td>
+          
+      </tr>
+       <tr height="45px">
+            
+  		 <td colspan="2" align="center">拟  免  职  务</td>
+          <td colspan="6"></td>
+          
+      </tr>
+      
+         <tr height="580px">
+            
+  		 <td width="50px"><p align="center">简</p><br><br><br><br><br><br><br><br><p align="center">历</p></td>
+          <td colspan="6">
+          —             <!-- 1988.09—1990.08   舟山商业学校财务会计专业学习
+                    </br/>1990.08—1990.09   浙江林学院劳动服务公司职工
+                    </br/>1990.09—1999.01   浙江林学院投资企业会计、财务科长
+                     </br/> 1999.01—2005.07   浙江林学院审计处干部（1999.09-2002.07 浙江林学院经济管理专业函授专科   毕业），2004.12经济师
+
+                     </br/>2005.07—2008.07   浙江林学院审计处副处长（2005.03-2008.01 浙江
+  林学院园林专业函授本科学   习，获农学学士学位）
+
+                    </br/>2008.07—2011.04   浙江农林大学校园建设与管理处处长（其间：
+  2013.10-2013.11国家教育行政   学院高校领导干部
+  进修班跟班学习）
+
+                   </br/>2011.04—2013.11   浙江农林大学后勤集团总经理
+
+
+                 </br/>2013.11—2015.08   浙江农林大学后勤集团总经理
+                 </br/>2015.08—    浙江农林大学党委办公室、学校办公室主任，2017.01高级经济师 -->
+   
+  </td>
+          
+      </tr>
+
+      
+      <tr height="150px">
+            
+  		<td align="center">奖<br>惩<br>情<br>况</td>
+          <td colspan="6"> </td>
+          
+      </tr>
+       
+      <tr height="100px">
+            
+  		<td align="center">年度<br>考核<br>结果</td>
+          <td colspan="6"><!-- 2014、2015年度均为称职 --></td>
+          
+      </tr>
+
+      <tr height="150px">
+            
+  		<td align="center">任<br>免<br>理<br>由<p></p></td>
+          <td colspan="6"></td>
+          
+      </tr>
+      <tr>
+            
+  		<td rowspan="7" overflow="“hidden”" align="center" width="50px" margin-left="10px">主<br>要<br>家<br>庭<br>成<br>员<br>及<br>重<br>要<br>社<br>会<br>关<br>系</td>
+  <td><p align="center">称谓</p></td>
+  <td><p align="center">姓名</p></td>
+  <td><p align="center">出生年月</p></td>
+  <td><p align="center">政治面貌</p></td>
+  <td colspan="4"><p align="center">工 作 单 位 及 职 务</p></td>
+          
+      </tr>
+            <tr>
+  		<td><p align="center"> </p></td>
+  		<td><p align="center"></p></td>
+  		<td><p align="center" font-family="Times New Roman"> </p></td>
+  		<td><p align="center"> </p></td>
+  		<td colspan="4"><p align="center"> </p></td>
+          
+      </tr>
+            <tr>
+  		<td><p align="center"> </p></td>
+  		<td><p align="center"></p></td>
+  		<td><p align="center" font-family="Times New Roman"> </p></td>
+  		<td><p align="center"> </p></td>
+  		<td colspan="4"><p align="center"> </p></td>
+          
+      </tr>
+            <tr>
+  		<td><p align="center"> </p></td>
+  		<td><p align="center"></p></td>
+  		<td><p align="center" font-family="Times New Roman"> </p></td>
+  		<td><p align="center"> </p></td>
+  		<td colspan="4"><p align="center"> </p></td>
+          
+      </tr>
+            <tr>
+  		<td><p align="center"> </p></td>
+  		<td><p align="center"></p></td>
+  		<td><p align="center" font-family="Times New Roman"> </p></td>
+  		<td><p align="center"> </p></td>
+  		<td colspan="4"><p align="center"> </p></td>
+          
+      </tr>
+            <tr>
+  		<td><p align="center"> </p></td>
+  		<td><p align="center"></p></td>
+  		<td><p align="center" font-family="Times New Roman"> </p></td>
+  		<td><p align="center"> </p></td>
+  		<td colspan="4"><p align="center"> </p></td>
+          
+      </tr>
+            <tr>
+  		<td><p align="center"> </p></td>
+  		<td><p align="center"></p></td>
+  		<td><p align="center" font-family="Times New Roman"> </p></td>
+  		<td><p align="center"> </p></td>
+  		<td colspan="4"><p align="center"> </p></td>
+          
+      </tr>
+            <!-- <tr>
+  		<td ><p align="center">儿子</p></td>
+  		<td ><p align="center">潘褚安</p></td>
+  		<td ><p align="center">1995.08</p></td>
+  		<td ><p align="center">共青团员</p></td>
+  		<td colspan="4"><p align="center">浙江传媒学院三年级学生</p></td>
+          
+      </tr>
+      <tr>
+  		<td ><p align="center">父亲</p></td>
+  		<td ><p align="center">潘汤法</p></td>
+  		<td ><p align="center">1939.02</p></td>
+  		<td ><p align="center">中共党员</p></td>
+  		<td colspan="4"><p align="center">临安市横路乡后干村务农</p></td>
+          
+      </tr>
+      <tr>
+          <td ><p align="center">母亲</p></td>
+          <td ><p align="center">李银花</p></td>
+          <td ><p align="center">1944.08</p></td>
+          <td ><p align="center">群众</p></td>
+          <td colspan="4"><p align="center">临安市横路乡后干村务农</p></td>
+          
+      </tr> -->
+      <!-- <tr>
+        <td ><p align="center"> </p></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>
+          <td colspan="4"></td>
+          
+      </tr>
+      <tr>
+         <td ><p align="center"> </p></td>
+          <td ></td>
+          <td ></td>
+          <td ></td>
+          <td colspan="4"></td>
+          
+      </tr> -->
+      
+        
+       <tr height="110px">
+            
+  		 <td overflow="“hidden”" align="center" width="30px">呈<br>报<br>单<br>位
+  </td>
+  		 <td colspan="6"><p align="right" font-family="Times New Roman" padding="20px"><br><br><br><br><br>（盖章）   <br>  年    月    日    </p></td>
+          
+      </tr>
+       <tr height="180px">
+            
+  		 <td overflow="“hidden”" align="center" width="30px">审 意<br>批    <br>机    <br>关 见<br></td>
+  		 <td colspan="3"><p align="right"><br><br><br><br><br>（盖章）   <br>  年     月     日     </p></td>
+  		 <td align="center">行 任<br>政 免<br>机 意<br>关 见</td>
+          <td colspan="3"><p align="right"><br><br><br><br><br>（盖章）   <br>  年     月     日     </p></td>
+      </tr>
+    </tbody></table>
+<p style="width: 794px;margin: 0 auto;"><br>填表人：</p><br>
+
+
+
+<div id="qb-sougou-search" style="display: none; opacity: 0;"><p>搜索</p><p class="last-btn">复制</p><iframe src=""></iframe></div><form action="" method="post" style="display: none;"><textarea name="x" id="opt"></textarea></form></body></html>

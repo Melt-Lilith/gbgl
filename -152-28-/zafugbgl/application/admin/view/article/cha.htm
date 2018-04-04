@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>干部考核与信息管理系统</title>
+<meta name="description" content="Dashboard">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--Basic Styles-->
+<link href="__ADMIN__/style/normalize.css" rel="stylesheet">
+<link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+<link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+<link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+<!--Beyond styles-->
+<link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+<link href="__ADMIN__/style/demo.css" rel="stylesheet">
+<link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+<link href="__ADMIN__/style/animate.css" rel="stylesheet">
+<link href="__ADMIN__/style/style.css" rel="stylesheet">
+<link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+<link href="__ADMIN__/style/admin.css" rel="stylesheet">
+<link href="__ADMIN__/style/app.css" rel="stylesheet">
+
+<!--Basic Scripts-->
+<script src="__ADMIN__/style/jquery_002.js"></script>
+<script src="__ADMIN__/style/bootstrap.js"></script>
+<script src="__ADMIN__/style/jquery.js"></script>
+<script src="__ADMIN__/js/jquery.min.js"></script> 
+<!--Beyond Scripts-->
+</head>
+<body>
+<!-- 头部 --> 
+{include file="public/top"} 
+<!-- /头部 -->
+
+<div class="tpl-page-container tpl-page-header-fixed">
+  <!-- Page Sidebar --> 
+  {include file="public/left"} 
+  <!-- /Page Sidebar --> 
+  <!-- Page Content -->
+  <div class="tpl-content-wrapper"> 
+    <!-- Page Breadcrumb -->
+    <div>
+        <ol class="breadcrumb">
+          <li><a href="#">首页</a></li>
+          <li><a href="#">干部信息管理</a></li>
+          <li class="active">干部信息查询</li>
+        </ol>
+      </div>
+    <!-- /Page Breadcrumb -->
+    <div class="page-body">
+    <div class="row">
+
+    <div class="btn-addadd"><a href="__index__/index.php/admin/Article/export"><button type="button"  class="btn btn-sm btn-azure btn-addon">Excel导出 </button></a></div>
+
+      <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+         
+          <div class="widget-body1">
+            <div id="horizontal-form">
+           
+           
+              <table class="table table-bordered  table-hover table-condensed text-center">
+                <thead>
+                  <tr>
+                    <th width="10%">工号</th>
+                    <th width="10%">姓名</th>
+                    <th width="10%">性别</th>
+                    <th width="10%">出生日期</th>
+                     <th width="10%">政治面貌</th>
+                     <th width="10%">工作时间</th>
+                      <th width="10%">职称</th>
+                       <th width="10%">学历</th>
+                        <th width="10%">部门</th>
+                    <th width="40%">职务</th>
+                 
+                  </tr>
+                </thead>
+                
+                
+                
+                <tbody  id="list">
+                
+                {volist name="res" id="r"}
+                <tr>
+                    <label>
+                  <td align="center">{$r.worknum}</td>
+               
+                  <td>{$r.name}</td> 
+                    <td>{$r.sex}</td>
+                  <td>{$r.birthday}</td>
+                 <td>{$r.politics}</td>
+                 <td>{$r.alljobtime}</td>
+                 <td>{$r.ptitle}</td>
+                 <td>{$r.edubg}</td>
+                 <td>{$r.catename}</td>
+                  <td>{$r.job}</td>
+                 
+                  
+                    </label>
+                </tr>
+                {/volist}
+                  </tbody>
+                
+              </table>
+              
+              
+            
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  
+  <!-- /Page Content --> 
+</div>
+<script src="__ADMIN__/style/beyond.js"></script>
+<script src="__ADMIN__/js/amazeui.min.js"></script>
+<script src="__ADMIN__/js/app.js"></script>
+</body>
+</html>

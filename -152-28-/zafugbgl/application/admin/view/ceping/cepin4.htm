@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html><head>
+      <meta charset="utf-8">
+    <title>干部考核与信息管理系统</title>
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+
+  <link href="__ADMIN__/style/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+
+    <link href="__ADMIN__/style/style.css" rel="stylesheet">
+    <link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+<link href="__ADMIN__/style/admin.css" rel="stylesheet">
+<link href="__ADMIN__/style/app.css" rel="stylesheet">
+<!-- 新增手机端css -->
+<link href="__ADMIN__/style/jzstyle.css" rel="stylesheet">
+<!-- 开关 -->
+<link href="__ADMIN__/style/lc_switch.css" rel="stylesheet">
+ <!-- 弹出窗口 2017.12.1-->
+<link href="__ADMIN__/style/animate.min.css" rel="stylesheet">
+<!-- <link href="__ADMIN__/style/common.css" rel="stylesheet"> -->
+
+<!-- end -->
+</head>
+<body>
+  <!-- 头部 -->
+  {include file="public/top"} 
+
+  <!-- /头部 -->
+<div class="tpl-page-container tpl-page-header-fixed"> 
+                        <!-- Page Sidebar -->
+            {include file="public/left"} 
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="tpl-content-wrapper">
+                <!-- Page Breadcrumb -->
+                <div>
+        <ol class="breadcrumb jz-breadcrumb">
+          <li><a href="#">首页</a></li>
+          <li><a href="#">干部测评</a></li>
+          <li class="active">试用期干部测评</li>
+        </ol>
+      </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+<div class="page-body">          
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+   
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue xa-widget-header">
+                <span class="widget-caption">考核测评表</span>
+            </div>
+            <div class="widget-body widget-body2">
+             <!--  判断已测评    -->
+
+            {if($checkobject["0"]["status"]==1)}                     
+            <div id="horizontal-form">
+                    <!--startprint1--> <h4 style="text-align:center; font-weight:600;"><b>{$name['name']}——{$checkobject["0"]["bename"]}同志</b></h4>
+                        
+                     <table class="table table-bordered">
+                      
+                      <thead>
+                        <tr>
+                          <th>现任职务</th>
+                          <th>现岗位胜任度评价</th>
+                          <th>是否同意其正式任职</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{$checkobject["0"]["job"]}</td>
+                          <td>
+                                <input type="hidden" name="beworknum" value="{$checkobject['0']['beworknum']}">
+                            {$cepxx.srd}
+                          </td>
+                        
+                       
+                          <td>
+                            {$cepxx.zssr}
+                          
+                       </tr>
+                        <tr>
+                          <td>评议意见</td>
+                          <td colspan="2">{$cepxx.yijian}</td>
+                        </tr>
+                         
+                       
+                       
+                    
+                      </tbody>
+                     </table>
+                     
+                         <div class="clear" style="height: 15px;margin-top: 20px;">   
+
+                        <div class="fanhui">
+                        <a  href="{:url('checklst',array('id'=>$tableid))}" class="btn btn-default">返回</a>
+                        </div>
+                        
+
+                </div>
+
+                
+                <!--  判断未测评    -->
+            {elseif($checkobject["0"]["status"]==2)}                
+                <div id="horizontal-form">
+                    <!--startprint1--> <h4 style="text-align:center; font-weight:600;"><b>{$name['name']}—————{$checkobject["0"]["bename"]}同志</b></h4>
+                    <form class="form-horizontal" role="form" action="__index__/index.php/admin/Ceping/cepin4" method="post" enctype="multipart/form-data">  
+                    <table class="table table-bordered" id="wxf-text-center">
+                      
+                      <thead>
+                        <tr>
+                          <th width="30%">现任职务</th>
+                          <th width="40%">现岗位胜任度评价</th>
+                          <th width="30%">是否同意其正式任职</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{$checkobject["0"]["job"]}</td>
+                          <td>
+                                <input type="hidden" name="beworknum" value="{$checkobject['0']['beworknum']}">
+                            <label class="checkbox-inline checkbox-place">
+                                <input type="radio" name="srd" id="optionsRadios3" value="优秀" required="required">&nbsp;优秀
+                            </label>
+                            <label class="checkbox-inline checkbox-place">
+                                <input type="radio" name="srd" id="optionsRadios4"  value="称职">&nbsp; 称职
+                            </label>
+                            <label class="checkbox-inline checkbox-place">
+                                <input type="radio" name="srd" id="optionsRadios3" value="基本称职">&nbsp;基本称职
+                            </label>
+                            <label class="checkbox-inline checkbox-place">
+                                <input type="radio" name="srd" id="optionsRadios4"  value="不称职">&nbsp; 不称职
+                            </label>
+                          </td>
+                        
+                       
+                          <td>
+                            <label class="checkbox-inline checkbox-place">
+                                <input type="radio" name="zssr" id="optionsRadios3" value="同意" required="required">&nbsp;同意
+                            </label>
+                            <label class="checkbox-inline checkbox-place">
+                                <input type="radio" name="zssr" id="optionsRadios4"  value="不同意"> &nbsp;不同意
+                            </label>
+                          
+                       </tr>
+                        <tr>
+                          <td>评议意见</td>
+                          <td colspan="2">
+                          <textarea  name="yijian" class="form-control" id="firstname" 
+                                       placeholder="您的评议建议"></textarea>
+
+                         
+                        </tr>
+                         
+                       
+                       
+                    
+                      </tbody>
+                     </table>
+                     
+
+            <!--  手机端表格 -->
+                     <table class="table table-bordered jzj-text-center" id="wuxiaofa-text-center" >
+                      
+                      <thead>
+                        <tr>
+                          <th>现任职务</th>
+                          <th>现岗位胜任度评价</th>
+                          <th>是否同意其正式任职</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{$checkobject["0"]["job"]}</td>
+                          <td>
+                                <input type="hidden" name="beworknum" value="{$checkobject['0']['beworknum']}">
+
+                                <div class=" col-sm-12 jz-col">
+                                           <label class="checkbox-inline checkbox-place ">
+                                            <input type="radio"  name="bzsummary" id="optionsRadios3" value="优秀" class="lcs_check lcs_tt2 jz-check" autocomplete="off" />&nbsp;优秀
+                                           </label>
+                                </div>
+                          
+                                <div class=" col-sm-12 jz-col">
+                            <label class="checkbox-inline checkbox-place">
+                                <input type="radio" name="srd" id="optionsRadios3" value="称职" class="lcs_check lcs_tt2 jz-check" autocomplete="off" />&nbsp;称职
+                            </label>
+                             </div>
+                                <div class=" col-sm-12 jz-col">
+                            <label class="checkbox-inline checkbox-place">
+                                <input type="radio" name="srd" id="optionsRadios3" value="基本称职" class="lcs_check lcs_tt2 jz-check" autocomplete="off" />&nbsp;基本称职
+                            </label>
+                             </div>
+                                <div class=" col-sm-12 jz-col">
+                            <label class="checkbox-inline checkbox-place">
+                                <input type="radio" name="srd" id="optionsRadios3" value="不称职" class="lcs_check lcs_tt2 jz-check" autocomplete="off" />&nbsp;不称职
+                            </label>
+                            </div>
+                          </td>
+                        
+                       
+                          <td>
+                           
+                                 <div class=" col-sm-12 jz-col">
+                            <label class="checkbox-inline checkbox-place">
+                                <input type="radio" name="zssr" id="optionsRadios3" value="同意" class="lcs_check lcs_tt2 jz-check" autocomplete="off" />&nbsp;同意
+                            </label>
+                            </div>
+
+                             <div class=" col-sm-12 jz-col">
+                            <label class="checkbox-inline checkbox-place">
+                                <input type="radio" name="zssr" id="optionsRadios3" value="不同意" class="lcs_check lcs_tt2 jz-check" autocomplete="off" />&nbsp;不同意
+                            </label>
+                            </div>
+                          
+                       </tr>
+                        <tr>
+                          <td>评议意见</td>
+                          <td colspan="2">
+                          <textarea  name="yijian" class="form-control" id="firstname" 
+                                       placeholder="您的评议建议"></textarea>
+
+                         
+                        </tr>
+                         
+                       
+                       
+                    
+                      </tbody>
+                     </table>                         
+                            
+                        <!--   手机端表格end -->
+                     <div class="clear" style="height: 15px;margin-top: 20px;" id="jz-clear">   
+                         
+
+                         <div class="col-md-8 col-sm-offset-2 text-center "  >
+
+                              <a class="demo17 rubberBand"><button type="submit" class="btn btn-info " id="jzbtn">提交</button></a>
+
+                        </div>
+                        <div class="fanhui " id="jz-fanhui">
+                          <a  href="{:url('checklst',array('id'=>$tableid))}" class="btn btn-default">返回
+                          </a>
+                        </div>
+                        
+                      </div>
+                       
+
+                        <!--  手机端提交和返回按钮 -->
+                        
+                        <div class="wuxiaofa " id="wuxia-text-center" style="margin-top:0px;">
+                              <a class="demo17 rubberBand"><button type="submit" class="btn btn-info jz-tijiao" id="jzbtn" style="width:100%;">提交</button>
+                           </a>
+                        </div>
+                        <div class="jztel-fanhui" id="jztel-fanhui">
+                             <a  href="{:url('checklst',array('id'=>$tableid))}" class="btn btn-default">返回</a>
+                        </div>
+                             
+                        
+                        </form>
+                </div>
+                {/if}
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+      
+  </div>
+  <!-- 弹出窗口 -->
+<div id="HBox" style="width:300px;height:270px;margin:0 auto;box-shadow:1px 1px 5px #333;-webkit-box-shadow:1px 1px 5px #333;display:none;background-color:#ffffff;">
+ <p style="margin-top : 60px; margin-left:30px;font-size: 35px;font-family: Microsoft YaHei;">系统正在处理中</p>
+</div>
+<!-- end -->
+
+ <script>
+// $(function(){
+  $("#jzbtn").click(function(){
+  //var $el = $('.dialog');
+  //$el.hDialog(); //默认调用
+  //定时关闭
+  $('.demo17').hDialog({width:300,height: 150,hideTime: 10000, modalHide: false,closeHide: false});
+
+  console.log("111"); //返回顶部
+ // $.goTop();
+
+});
+
+ // alert("11");
+</script>
+<!-- 弹出框口 -->
+<script src="__ADMIN__/style/jquery-1.9.1.min.js"></script>
+<script src="__ADMIN__/style/jquery.hDialog.min.js"></script>
+<!-- end -->
+    <script>
+      $('#file-fr').fileinput({
+          language: 'fr',
+          uploadUrl: '#',
+          allowedFileExtensions : ['jpg', 'png','gif'],
+      });
+      $('#file-es').fileinput({
+          language: 'es',
+          uploadUrl: '#',
+          allowedFileExtensions : ['jpg', 'png','gif'],
+      });
+      $("#file-0").fileinput({
+          'allowedFileExtensions' : ['jpg', 'png','gif'],
+      });
+      $("#file-1").fileinput({
+          uploadUrl: '#', // you must set a valid URL here else you will get an error
+          allowedFileExtensions : ['jpg', 'png','gif'],
+          overwriteInitial: false,
+          maxFileSize: 1000,
+          maxFilesNum: 10,
+          //allowedFileTypes: ['image', 'video', 'flash'],
+          slugCallback: function(filename) {
+              return filename.replace('(', '_').replace(']', '_');
+          }
+    });
+      /*
+      $(".file").on('fileselect', function(event, n, l) {
+          alert('File Selected. Name: ' + l + ', Num: ' + n);
+      });
+      */
+    $("#file-3").fileinput({
+      showUpload: false,
+      showCaption: false,
+      browseClass: "btn btn-primary btn-lg",
+      fileType: "any",
+          previewFileIcon: "<i class='glyphicon glyphicon-king'></i>"
+    });
+    $("#file-4").fileinput({
+      uploadExtraData: {kvId: '10'}
+    });
+      $(".btn-warning").on('click', function() {
+          if ($('#file-4').attr('disabled')) {
+              $('#file-4').fileinput('enable');
+          } else {
+              $('#file-4').fileinput('disable');
+          }
+      });    
+      $(".btn-info").on('click', function() {
+          $('#file-4').fileinput('refresh', {previewClass:'bg-info'});
+      });
+      /*
+      $('#file-4').on('fileselectnone', function() {
+          alert('Huh! You selected no files.');
+      });
+      $('#file-4').on('filebrowse', function() {
+          alert('File browse clicked for #file-4');
+      });
+      */
+      $(document).ready(function() {
+          $("#test-upload").fileinput({
+              'showPreview' : false,
+              'allowedFileExtensions' : ['jpg', 'png','gif'],
+              'elErrorContainer': '#errorBlock'
+          });
+          /*
+          $("#test-upload").on('fileloaded', function(event, file, previewId, index) {
+              alert('i = ' + index + ', id = ' + previewId + ', file = ' + file.name);
+          });
+          */
+      });
+    </script>
+      <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+
+    <script type="text/javascript" src="__ADMIN__/style/jquery.js"></script> 
+    <script type="text/javascript" src="__ADMIN__/style/jquery.cityselect.js"></script> 
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    <script src="__ADMIN__/js/jquery.min.js"></script> 
+    <script src="__ADMIN__/style/distpicker.data.js"></script>
+    <script src="__ADMIN__/style/distpicker.js"></script>
+    <script src="__ADMIN__/style/style.js"></script>
+    <script src="__ADMIN__/js/amazeui.min.js"></script>
+<script src="__ADMIN__/js/app.js"></script>
+        <script src="__ADMIN__/style/fileinput.js" type="text/javascript"></script>
+  <script src="__ADMIN__/style/fileinput_locale_fr.js" type="text/javascript"></script>
+  <script src="__ADMIN__/style/fileinput_locale_es.js" type="text/javascript"></script>
+      <!-- 开关按钮 -->
+   <!--  <script src="__ADMIN__/style/lc_switch.js" type="text/javascript"></script>
+    <script type="text/javascript">
+$(document).ready(function(e) {
+    var winWide=$(window).width() ;
+   
+       
+if(winWide<=900)
+    {
+    
+
+    $('input').lc_switch();
+    // triggered each time a field changes status
+    $('body').delegate('.lcs_check', 'lcs-statuschange', function() {
+        var status = ($(this).is(':checked')) ? 'checked' : 'unchecked';
+        console.log('field changed status: '+ status );
+    });
+
+    // triggered each time a field is checked
+    $('body').delegate('.lcs_check', 'lcs-on', function() {
+        console.log('field is checked');
+    });
+    
+    
+    // triggered each time a is unchecked
+    $('body').delegate('.lcs_check', 'lcs-off', function() {
+        console.log('field is unchecked');
+    });
+    }
+   
+
+   
+   $(window).resize(function() {
+      winWide = $(window).width();
+       if(winWide<=900)
+    {
+    
+
+    $('input').lc_switch();
+    // triggered each time a field changes status
+    $('body').delegate('.lcs_check', 'lcs-statuschange', function() {
+        var status = ($(this).is(':checked')) ? 'checked' : 'unchecked';
+        console.log('field changed status: '+ status );
+    });
+
+    // triggered each time a field is checked
+    $('body').delegate('.lcs_check', 'lcs-on', function() {
+        console.log('field is checked');
+    });
+    
+    
+    // triggered each time a is unchecked
+    $('body').delegate('.lcs_check', 'lcs-off', function() {
+        console.log('field is unchecked');
+    });
+    }
+
+
+});
+ 
+    
+});
+</script>  -->
+</body></html>

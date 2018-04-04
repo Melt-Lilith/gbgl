@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+<title>表格</title>
+<style>
+	.table-wuxiaofa{font-size: 14px;
+	                text-align: center;}
+                  .table-wuxiaofa-xiao{font-size: 14px;
+                    text-align: center;}
+
+	.table-wuxiaofa-wu{text-align: center;
+	                   font-size: 14px;
+	font-family: SimSun ;}
+  td{padding:0px 0px 0px 0px; background-color: #fff;}
+  tr{padding:0px 0px 0px 0px; background-color: #fff;}
+</style>
+<script>
+function btnPrintClick(){ 
+   var temp = document.createElement("form");
+  temp.action ="";
+  temp.method = "post";
+  temp.style.display = "none";
+    var opt = document.createElement("textarea");
+    opt.name = "x";
+    opt.id="opt"
+    temp.appendChild(opt);
+  document.body.appendChild(temp);
+  document.getElementById("opt").innerHTML=document.documentElement.innerHTML;
+  //console.log(document.documentElement.innerHTML);
+  temp.submit();
+  return temp;
+    }  
+</script>
+</head>
+
+<body>
+<input id="btnPrint" value="生成Word"  type="button" onclick="btnPrintClick()"/></input>
+ <table class="table-wuxiaofo" width="640px" border="0" cellspacing="1" align="center" style="background-color: #000;border:none;" >
+<div style="text-align: center;font-family: SimSun ;"><h2 style="text-align: center;">浙江农林大学中层干部年度考核登记表</h2>
+ <p style="font-size: 24px;"> ( &nbsp&nbsp&nbsp 年度)</p>
+ <p style="font-size: 24px;">&nbsp&nbsp&nbsp</p>
+ <p style="font-size: 24px;">&nbsp&nbsp&nbsp</p>
+ <p style="font-size: 24px;">&nbsp&nbsp&nbsp</p>
+ <p style="font-size: 24px;"><b>姓名___________________</b></p>
+ <p style="font-size: 24px;"><b>职务___________________</b></p>
+ <p style="font-size: 24px;"><b>部门___________________</b></p>
+ <p style="font-size: 24px;">&nbsp&nbsp&nbsp</p>
+ <p style="font-size: 24px;">&nbsp&nbsp&nbsp</p>
+ <span style="font-size: 24px;" align="center">填表时间：&nbsp&nbsp&nbsp年&nbsp&nbsp&nbsp 月 &nbsp&nbsp&nbsp日</span>
+ <p style="font-size: 10px;">（注：本表归入个人人事档案，为了便于归档，请采用A4纸双面打印，页边距：上下左右均2.5cm;</br>表内填写字体：宋体5号字，行距：1.0打印）</p>
+  <p style="font-size: 24px;">&nbsp&nbsp&nbsp</p>
+  <p style="font-size: 24px;">&nbsp&nbsp&nbsp</p>
+  <p style="font-size: 24px;">&nbsp&nbsp&nbsp</p>
+  <p style="font-size: 24px;">&nbsp&nbsp&nbsp</p>
+  <p style="font-size: 24px;">&nbsp&nbsp&nbsp</p>
+  <p style="font-size: 24px;">&nbsp&nbsp&nbsp</p>
+  <p style="font-size: 24px;">&nbsp&nbsp&nbsp</p>
+</div></table>
+<!--第二张表-->
+<table class="table-wuxiaofo-xiao" width="640px" border="0" cellspacing="1" align="center" style="background-color: #000;border:none;" >
+  <tr class="table-wuxiaofa-wu">
+	 <td ><p>姓名</p></td>
+	 <td >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+	 <td >出生年月</td>
+	 <td >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+	 <td >政治面貌</td>
+	 <td >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+	 </tr>
+ <tr class="table-wuxiaofa-wu">
+  <td ><p>现任职务</p></td>
+	<td >&nbsp</td>
+	<td >任职时间</td>
+	<td >&nbsp</td>
+	<td >分管工作</td>
+	<td >&nbsp</td>
+ </tr>
+      <tr class="table-wuxiaofa-wu">
+       <td colspan="6"><p>个&nbsp人&nbsp小&nbsp结<br>（主要总结在中层管理岗位的德才表现、工作实绩及存在问题，字数1000字以内)</p></td>
+      </tr>
+     <tr class="table-wuxiaofa-wu">
+       <td colspan="6">
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+      <p>&nbsp</p>
+
+     </td>
+       </tr>
+<!--第三张表-->
+<tr><td colspan="6">
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+       <p>&nbsp</p>
+      <p>&nbsp</p>
+      <p>&nbsp</p>
+       <span>本人签名：</span> <span style="float: right;">年&nbsp&nbsp&nbsp月&nbsp&nbsp&nbsp 日</span>
+     </td>
+   </tr>
+ 
+<tr class="table-wuxiaofa-wu">
+       <td><p>参加<br>进修<br>培训<br>情况</p></td>
+       <td colspan="5" style="font-size: 12px;text-align: left"><span>(包括培训班名称、培训时间、地点、主办单位)</span>
+       <br>&nbsp&nbsp
+       <br>&nbsp&nbsp
+       <br>&nbsp&nbsp
+       <br>&nbsp&nbsp</td>
+     </tr>
+     <tr class="table-wuxiaofa-wu">
+       <td><p>承担<br>教学<br>工作<br>情况</p></td>
+       <td colspan="5" style="font-size: 12px;text-align: left" ><span>(包括课程名称、学生人数、上课时间、课时量)</span>
+       <br>&nbsp&nbsp
+       <br>&nbsp&nbsp
+       <br>&nbsp&nbsp
+       <br>&nbsp&nbsp</td>
+     <tr class="table-wuxiaofa-wu">
+       <td><p>参加<br>科研<br>工作<br>情况</p></td>
+       <td colspan="5"></td>
+     </tr>
+     <tr class="table-wuxiaofa-wu">
+       <td><p>社会<br>兼职<br>情况</p></td>
+       <td colspan="5"></td>
+     </tr>
+     <tr class="table-wuxiaofa-wu">
+       <td><p>出国<br>情况</p></td>
+       <td colspan="5" style="font-size: 12px;text-align: left"><span>(因公、因私出国（境）等情况，包括时间、地点、缘由)</span>
+        <br>&nbsp&nbsp
+        <br>&nbsp&nbsp
+       </td>
+     </tr>
+     <tr class="table-wuxiaofa-wu">
+       <td><p>奖惩<br>情况</p></td>
+       <td colspan="5"></td>
+     </tr>
+     <tr class="table-wuxiaofa-wu">
+       <td><p>学校<br>党委<br>考核<br>意见</p></td>
+       <td colspan="5">
+      <br>&nbsp&nbsp
+       <br>&nbsp&nbsp
+       <span style="float: right;">&nbsp&nbsp 年&nbsp&nbsp 月&nbsp&nbsp 日</span></td>
+     </tr>
+     <tr class="table-wuxiaofa-wu">
+       <td><p>本人<br>情况</p></td>
+       <td colspan="5"></td>
+     </tr>
+</table>
+    </body>
+</html>

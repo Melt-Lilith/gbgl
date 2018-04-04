@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>干部考核与信息管理系统</title>
+  <meta name="description" content="Dashboard">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--Basic Styles-->
+  <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+  <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+  <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+  <!--Beyond styles-->
+  <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+  <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+  <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+  <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+  <link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+  <link href="__ADMIN__/style/admin.css" rel="stylesheet">
+  <link href="__ADMIN__/style/app.css" rel="stylesheet">
+  <link href="__ADMIN__/style/style.css" rel="stylesheet">
+  <!-- 弹出窗口 2017.12.1-->
+  <link href="__ADMIN__/style/animate.min.css" rel="stylesheet">
+  <!-- <link href="__ADMIN__/style/common.css" rel="stylesheet"> -->
+
+  <!-- end -->
+  <!--Basic Scripts-->
+  <script src="__ADMIN__/style/jquery_002.js"></script>
+  <script src="__ADMIN__/style/bootstrap.js"></script>
+  <script src="__ADMIN__/style/jquery.js"></script>
+  <script src="__ADMIN__/js/jquery.min.js"></script> 
+  <!--Beyond Scripts-->
+</head>
+<body>
+  <!-- 头部 --> 
+  {include file="public/top"} 
+
+  <!-- /头部 -->
+
+  <div class="tpl-page-container tpl-page-header-fixed">
+    <!-- Sidebar Menu --> 
+    {include file="public/left"} 
+    <!-- /Sidebar Menu --> 
+
+
+    <!-- Page Content -->
+
+    <div class="tpl-content-wrapper"> 
+      <!-- Page Breadcrumb -->
+
+      <!-- /Page Breadcrumb --> 
+      <!-- Page Body --> 
+      <!-- crad -->
+      {if $yonghutype['group_id']==1}
+      <div class="row cards xa-mobile-nodisplay"> 
+        <!-- 第一个-->
+        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+          <div class="dashboard-stat bai">
+            <div class="visual"> <i class="fa fa-venus-mars vis-i-yellow"></i> </div>
+            <div class="details">
+              <div class="number"><span class="card-numfs-sm">{$num['bsex']}</span> / <span>{$num['all']-$num['bsex']}</span></div>
+              <div class="desc">男/女</div>
+            </div>
+            <div class="more"> <span class="task"> <span class="desc">男女比例</span> <span class="card percent"><span>{$per['bsex']}%</span> / <span>{$per['gsex']}%</span></span> </span> <span class="progress">
+              <div class="am-progress tpl-progress am-progress-striped" style="background-color: #f36a5a;">
+                <div class="progress-bar progress-bar-info" style="width: {$per['bsex']}%"></div>
+              </div>
+            </span> </div>
+          </div>
+        </div>
+        <!-- 第一个--> 
+        <!-- 第二个-->
+        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+          <div class="dashboard-stat bai">
+            <div class="visual"> <i class="fa fa-graduation-cap vis-i-blue"></i> </div>
+            <div class="details">
+              <div class="number"><span class="card-numfs-sm">{$num['edubg']}</span> / <span>{$num['all']-$num['edubg']}</span></div>
+              <div class="desc">硕士及以上/其他</div>
+            </div>
+            <div class="more"> <span class="task"> <span class="desc">学历比例</span> <span class="card percent"><span>{$per['edubg']}%</span> /<span> {$per['fedubg']}%</span></span> </span> <span class="progress">
+              <div class="am-progress tpl-progress am-progress-striped">
+                <div class="am-progress-bar am-progress-bar-success" style="width: {$per['edubg']}%"></div>
+              </div>
+            </span> </div>
+          </div>
+        </div>
+        <!-- 第二个--> 
+        <!-- 第三个-->
+        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+          <div class="dashboard-stat bai">
+            <div class="visual"> <i class="fa fa-group vis-i-gree"></i> </div>
+            <div class="details">
+              <div class="number"><span class="card-numfs-sm">{$num['ptitle']}</span> / <span>{$num['all']-$num['ptitle']}</span></div>
+              <div class="desc">高级职称/其他</div>
+            </div>
+            <div class="more"> <span class="task"> <span class="desc">职称比例</span> <span class="card percent"><span>{$per['ptitle']}%</span> / <span>{$per['fptitle']}%</span></span> </span> <span class="progress">
+              <div class="am-progress tpl-progress am-progress-striped">
+                <div class="am-progress-bar am-progress-bar-success" style="width: {$per['ptitle']}%"></div>
+              </div>
+            </span> </div>
+          </div>
+        </div>
+        <!-- 第三个--> 
+        <!-- 第四个-->
+        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+          <div class="dashboard-stat bai">
+            <div class="visual"> <i class="fa fa-group vis-i-red"></i> </div>
+            <div class="details">
+              <div class="number"><span class="card-numfs-sm">{$num['politics']}</span> / <span>{$num['all']-$num['politics']}</span></div>
+              <div class="desc fontsize">党员/其他</div>
+            </div>
+            <div class="more"> <span class="task"> <span class="desc">党员比例</span> <span class="card percent"><span>{$per['politics']}%</span> / <span>{$per['fpolitics']}%</span></span> </span> <span class="progress">
+              <div class="am-progress tpl-progress am-progress-striped">
+                <div class="am-progress-bar am-progress-bar-success" style="width: {$per['politics']}%"></div>
+              </div>
+            </span> </div>
+          </div>
+        </div>
+        <!-- 第四个--> 
+      </div>  {if $app}
+
+      <div class="tpl-portlet-components xa-mobile-nodisplay">
+        <div class="portlet-title">
+          <div class="caption ">
+            <a  href="{:url('article/approval')}" style="text-decoration: none;color: #82949a"><span class="font-red bold"><span class="fa fa-bell"></span>
+              审批提醒：</span>您有<span class="am-badge tpl-badge-danger am-round">{$app}</span>个修改申请待审核  <span class="tpl-label-info">  进入审核<i class="am-icon-share"></i></span></a></div>
+            </div>
+
+          </div>{/if}
+          {/if}
+          <!-- /crad -->
+          <div class="row " style="padding-right: 20px;padding-left: 20px;">
+
+
+
+            <!--info-->
+<!--
+            <div class="am-u-md-6 am-u-sm-12 row-mb">
+              <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                  <div class="caption font-green bold">
+                    <span class="fa fa-bell"></span>
+                    最新消息</div>
+                  </div>
+                  <div style="margin-top: 20px;">
+                    <ul class="tpl-task-list tpl-task-remind">
+                      {if $reply}
+                      {volist name="reply" id="m"}
+                      <li>
+                        <div class="cosB">{$m.date|date="Y-m-d",###}</div>
+                        <div class="cosA">
+                         <a href="{:url('article/detail',array('id'=>$m.id))}"> <p ><span class="cosIco"><i class="am-icon-bell-o"></i></span>{$m.title|mb_substr=0,20,'utf-8'}</p>
+
+                         </div>
+                       </li>
+                       {/volist}
+                       {else/}
+
+                       <li>
+                        <div class="cosA">
+                          <p >暂无消息</p>
+                        </div>
+                      </li>
+                      <li>
+                      {if $yonghutype2['type']=="中层干部"}
+                        <div class="cosA">
+                          <p><a href="{:url('article/uploadfile',array('id'=>$yonghutype2['artid']))}" style="text-decoration: none;"><span class="cosIco label-danger"><i class="am-icon-bolt"></i></span>年度考核资料上传现已开始，请尽快上传  <span class="label label-sm label-warning"><i class="am-icon-share"></i>上传入口</span></a></p>
+                        </div>
+                        {/if}
+                      </li>
+                      {/if}
+                    </ul>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="am-u-md-6 am-u-sm-12 row-mb">
+                <div class="tpl-portlet-components">
+                  <div class="portlet-title">
+                    <div class="caption font-green bold">
+                      <span class="fa fa-bell"></span>
+                      最新公告</div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                      <ul class="tpl-task-list tpl-task-remind">
+                       {volist name="message" id="m"}
+                       <li>
+                        <div class="cosB">{$m.date|date="Y-m-d",###}</div>
+                        <div class="cosA">
+                          <p ><span class="cosIco"><i class="am-icon-bell-o"></i></span>{$m.title|mb_substr=0,20,'utf-8'}</p>
+                          <span>{$m.text}</span>
+                        </div>
+                      </li>
+                      {/volist}
+
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          -->
+          <!--/info--> 
+
+          <!--ceping--> 
+          <div class="tpl-portlet-components">
+            <div class="portlet-title">
+              <div class="caption font-red bold">
+                <span class="fa fa-pencil"></span>
+                测评任务</div>
+              </div>
+              <div class="tpl-block">
+                <div class="am-g">
+                  <div class="am-u-sm-12 am-u-md-6">
+
+                   {$artnum?' <p>您有&nbsp;&nbsp; <span class="cpnum">'.$artnum.'</span> &nbsp;&nbsp;类测评表需要完成</p>':'<p>您的测评任务都已完成</p>'}
+
+
+
+                 </div>
+               </div>
+               <div id="horizontal-form">
+                 {if $artnum}
+                 <table class="table table-bordered  table-hover table-condensed text-center" id="wxf-text-center">
+
+                  <thead>
+
+                    <tr>    
+                                    
+                     <th>调查表名称</th>
+                     <th>测评类型</th>
+                     <th>开始时间</th>
+                     <th>结束时间</th>
+                     <th>操作</th>
+                   </tr>
+                 </thead>
+                 <tbody  id="list">
+                   {volist name="artres" id="art"}
+                   <tr>
+
+                  
+                    <td>{$art.name}</td>
+                    <td>{$art.type} </td>
+                    <td>{$art.timestart} </td>
+                    <td>{$art.timeend}</td>
+
+                    {if($art.status=="3")}
+                    <td class="cepinganniu2" >
+                      <a href="#" class="btn btn-warning btn-sm shiny disabled">
+                       <i ></i> 已过期
+                     </a>
+                   </td>
+                   {elseif($art.status=="4")}
+                   <td class="cepinganniu1" >
+                    <a href="#" class="btn btn-success btn-sm shiny">
+                      <i></i> 未开启
+                    </a>
+                  </td>
+                  {elseif($art.status=="1")}
+                  <td class="cepinganniu1" >
+                    <a href="#" class="btn btn-success btn-sm shiny">
+                      <i></i> 已测评
+                    </a>
+                  </td>
+                  {else/}
+                  <td class="cepinganniu3" >
+                    <a {if $art['type']=="班子测评"}href="{:url('ceping/cepin3',array('id'=>$art['id'],'cateid'=>$yonghutype2['cateid']))}?page=1"{else/}href="{:url('ceping/checklst',array('id'=>$art['id']))}"{/if}  class="btn btn-primary btn-sm shiny demo17 rubberBand" id="jzbtn">
+                     <i class="fa fa-edit">   </i>   测评
+                   </a>
+
+                 </td>
+                 {/if}
+               </tr>
+               {/volist}
+
+             </tbody>
+
+
+
+             {volist name="artres" id="art"}
+           </table>
+           <!--手机端表格-->
+           <table class="table table-bordered  table-hover table-condensed text-center xa-pc-nodisplay" id="xa-table-sj">
+           {if($key)==0}
+           
+            <thead>
+              <tr>    
+
+                <th>调查表名称</th>
+
+                <th>起止日期</th>
+              </tr>
+            </thead>
+          {/if}
+            <tbody>
+              <tr>
+                <td>{$art.name} </td>
+                <td>{$art.timestart}--{$art.timeend}</td>
+              </tr> 
+            </tbody>
+          </table> 
+          {if($art.status=="3")}
+          <div class="wuxiaofa" id="wuxia-text-center" style="margin-bottom:10px;">
+           <a href="#"  class="btn btn-warning btn-block shiny" style="height: 40px;">
+            <i class="fa fa-edit" style="line-height:25px;"></i>已过期
+          </a></div>
+          {elseif($art.status=="4")}
+          <div class="wuxiaofa" id="wuxia-text-center" style="margin-bottom:10px;">
+           <a href="#"  class="btn btn-success btn-block shiny" style="height: 40px;">
+            <i class="fa fa-edit" style="line-height:25px;"></i>未开启
+          </a></div>
+          {elseif($art.status=="1")}
+          <div class="wuxiaofa" id="wuxia-text-center" style="margin-bottom:10px;">
+           <a href="#"  class="btn btn-success btn-block shiny" style="height: 40px;">
+            <i class="fa fa-edit" style="line-height:25px;"></i>已测评
+          </a></div>
+          {else/}
+          {if $art['type']=="班子测评"}
+           <div class="wuxiaofa" id="wuxia-text-center" style="margin-bottom:10px;">
+           <a href="{:url('ceping/cepin3',array('id'=>$art['id'],'cateid'=>$yonghutype2['cateid']))}?page=1"  class="btn btn-primary btn-block shiny demo17 rubberBand"   id="jzbtn" style="height: 40px;">
+            <i class="fa fa-edit" style="line-height:25px;"></i>测评
+          </a>
+        </div>
+          {else/} 
+          <div class="wuxiaofa" id="wuxia-text-center" style="margin-bottom:10px;">
+           <a href="{:url('ceping/checklst',array('id'=>$art['id']))}"  class="btn btn-primary btn-block shiny demo17 rubberBand"   id="jzbtn" style="height: 40px;">
+            <i class="fa fa-edit" style="line-height:25px;"></i>测评
+          </a>
+        </div>
+          {/if}
+         
+        {/if}
+      </table> 
+
+
+
+        {/volist} 
+
+
+
+      {/if} 
+    </div>
+
+  </div>
+</div>
+
+
+<!-- /Page Body --> 
+</div>
+</div>
+<!-- /Page Content --> 
+<!-- 弹出窗口 -->
+<div id="HBox" style="width:300px;height:270px;margin:0 auto;box-shadow:1px 1px 5px #333;-webkit-box-shadow:1px 1px 5px #333;display:none;background-color:#ffffff;">
+ <p style="margin-top : 60px; margin-left:30px;font-size: 18px;font-family: Microsoft YaHei;">数据正在进行有效性处理</p>
+</div>
+<!-- end -->
+
+<script>
+// $(function(){
+  $("#jzbtn").click(function(){
+  //var $el = $('.dialog');
+  //$el.hDialog(); //默认调用
+  //定时关闭
+  $('.demo17').hDialog({width:300,height: 150,hideTime: 10000, modalHide: false,closeHide: false});
+
+  console.log("111"); //返回顶部
+ // $.goTop();
+
+});
+
+ // alert("11");
+</script>
+<!-- 弹出框口 -->
+<script src="__ADMIN__/style/jquery-1.9.1.min.js"></script>
+<script src="__ADMIN__/style/jquery.hDialog.min.js"></script>
+<!-- end -->
+<!--Basic Scripts--> 
+<script src="__ADMIN__/style/jquery_002.js"></script> 
+<script src="__ADMIN__/style/bootstrap.js"></script> 
+<script src="__ADMIN__/style/jquery.js"></script> 
+<script src="__ADMIN__/js/jquery.min.js"></script> 
+<!--Beyond Scripts--> 
+<script src="__ADMIN__/style/beyond.js"></script>
+<script src="__ADMIN__/js/amazeui.min.js"></script>
+<script src="__ADMIN__/js/app.js"></script>
+</body>
+</html>

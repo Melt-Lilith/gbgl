@@ -1,0 +1,50 @@
+机关部门258个老师   
+教学部门1655
+
+2017 9.26   蒋梓恒
+controler
+admin/checkgl/select1
+admin/checkgl/select2
+admin/checkgl/del1
+view
+admin/checkgl/check1
+admin/checkgl/lst2
+admin/checkgl/lst3
+
+
+
+2017 9.26   张英杰
+controler
+admin/summary/summary
+admin/summary/weitoupiao
+admin/cate/lst
+view
+admin/admin/lst
+admin/summary/summary
+admin/summary/weitoupiao
+admin/cate/lst
+
+
+2017 9.27   张英杰
+controler
+admin/summary/summary
+admin/summary/weitoupiao
+view
+admin/summary/summary
+admin/summary/weitoupiao
+
+
+2017 9.27 蒋梓恒
+controler
+admin/ceping/cepin4
+
+
+2017 10.11 蒋梓恒
+controler
+admin/common
+model
+admin/admin/login
+view
+admin/public/top
+admin/public/left
+admin/admin/record

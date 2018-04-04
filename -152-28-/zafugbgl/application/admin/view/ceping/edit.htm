@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>干部考核与信息管理系统</title>
+<meta name="description" content="Dashboard">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--Basic Styles-->
+<link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+<link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+<link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+<!--Beyond styles-->
+<link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+<link href="__ADMIN__/style/demo.css" rel="stylesheet">
+<link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+<link href="__ADMIN__/style/animate.css" rel="stylesheet">
+<link href="__ADMIN__/style/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__/style/style.css" rel="stylesheet">
+<link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+<link href="__ADMIN__/style/admin.css" rel="stylesheet">
+<link href="__ADMIN__/style/app.css" rel="stylesheet">
+
+</head>
+<body>
+<!-- 头部 --> 
+{include file="public/top" /} 
+<!-- /头部 -->
+
+<div class="main-container container-fluid">
+  <div class="page-container"> 
+    <!-- Page Sidebar --> 
+    {include file="public/left" /} 
+    <!-- /Page Sidebar --> 
+    <!-- Page Content -->
+    <div class="page-content"> 
+      <!-- Page Breadcrumb -->
+      <div>
+        <ul class="breadcrumb">
+          <li> <a href="#">系统</a> </li>
+          <li> <a href="{:url('lst')}">干部管理</a> </li>
+          <li class="active">修改干部信息</li>
+        </ul>
+      </div>
+      <!-- /Page Breadcrumb --> 
+      
+      <!-- Page Body -->
+      <div class="page-body">
+        <div class="row">
+          <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="widget">
+              <div class="widget-header bordered-bottom bordered-blue"> <span class="widget-caption">修改干部信息</span> </div>
+              <div class="widget-body">
+                <div id="horizontal-form">
+                  <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data" >
+                    <input type="hidden" name="id" value="{$arts.id}">
+                    <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label no-padding-right">工号</label>
+                      <div class="col-sm-6">
+                        <p>{$arts.adminid}</p>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="group_id" class="col-sm-2 control-label no-padding-right">性别</label>
+                      <div class="col-sm-6">
+                        <select name="sex" style="width: 100%;">
+                          <option  selected="selected"  value="0">--性别选择--</option>
+                          <option {if ($arts.sex=="男")} selected="selected" {/if} value="男">男</option>
+                          <option {if ($arts.sex=="女")} selected="selected" {/if} value="女">女</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="group_id" class="col-sm-2 control-label no-padding-right">一寸照</label>
+                      <div class="col-sm-6">
+                        <div class="kv-main">
+                        {if ($arts.img=="")}
+                          <input id="file-0a"  class="file" name="img" type="file" multiple data-min-file-count="1">
+                           {else/}
+                          <img  width="50px" height="50px" src="__adminimg__/{$arts.img}" alt="11">
+                          <a href="{:url('changeimg',array('id'=>$arts['id']))}">修改照片</a>
+                          {/if}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label no-padding-right">出生日期</label>
+                      <div class="col-sm-6">
+                        <input type="date"  value="{$arts.birthday}" name="birthday"  class="form-control"  required="required"/>
+                      </div>
+                    </div>
+                    <div class="form-group form-group1">
+                      <label for="group_id" class="col-sm-2 control-label no-padding-right">籍贯</label>
+                      <div class="col-sm-6 ">
+                        <div data-toggle="distpicker">
+                          <div class="form-group col-sm-3">
+                            <label class="sr-only" for="province2">Province</label>
+                            {$arts.jiguan_p}<select class="form-control" name="jiguan_p" id="province2" data-province="">
+                            </select>
+                          </div>
+                          <div class="form-group col-sm-3">
+                            <label class="sr-only" for="city2">City</label>
+                            {$arts.jiguan_c}
+                            <select class="form-control" name="jiguan_c" id="city2" data-city="">
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+
+                    <div class="form-group form-group1">
+                      <label for="group_id" class="col-sm-2 control-label no-padding-right">出生地</label>
+                      <div class="col-sm-6 ">
+                        <div data-toggle="distpicker">
+                          <div class="form-group col-sm-3">
+                            <label class="sr-only" for="province2">Province</label>
+                            {$arts.chushengdi_p}
+                            <select class="form-control" name="chushengdi_p" id="province2" data-province="">
+                            
+                            </select>
+                          </div>
+                          <div class="form-group col-sm-3">
+                            <label class="sr-only" for="city2">City</label>
+
+                            {$arts.chushengdi_c}
+                            <select class="form-control" name="chushengdi_c" id="city2" data-city="">
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="group_id" class="col-sm-2 control-label no-padding-right">政治面貌</label>
+                      <div class="col-sm-6">
+                        <select name="politics" style="width: 100%;">
+                          <option selected="selected" value="0">--政治面貌选择--</option>
+                          <option {if ($arts.politics=="党员")} selected="selected" {/if} value="党员">党员</option>
+                          <option {if ($arts.politics=="共青团员")} selected="selected" {/if} value="共青团员">共青团员</option>
+                          <option {if ($arts.politics=="群众")} selected="selected" {/if} value="群众">群众</option>
+                          <option {if ($arts.politics=="民主党派成员")} selected="selected" {/if} value="民主党派成员">民主党派成员</option>
+                          <option {if ($arts.politics=="无党派人士")} selected="selected" {/if} value="无党派人士">无党派人士</option>
+                        </select>
+                      </div>
+                    </div>
+                   
+                    <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label no-padding-right">职务</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="work" placeholder="" value="{$arts.job}" name="job" required="required" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label no-padding-right">任现职时间</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts.jobtime}" name="jobtime" required="required" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label no-padding-right">任现级时间</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts.ranktime}" name="ranktime" required="required" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="username" class="col-sm-2 control-label no-padding-right">工作时间</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts.alljobtime}" name="alljobtime" required="required" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label no-padding-right">入党时间</label>
+                      <div class="col-sm-6">
+                        <input type="date" name="joinpartytime" value="{$arts.joinpartytime}" class="form-control"  required="required"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="group_id" class="col-sm-2 control-label no-padding-right">学历</label>
+                      <div class="col-sm-6">
+                        <select name="edubg" style="width: 100%;">
+                          <option selected="selected" value="0">--学历选择--</option>
+                          <option {if ($arts.edubg=="博士研究生")} selected="selected" {/if} value="博士研究生">博士研究生</option>
+                          <option {if ($arts.edubg=="硕士研究生")} selected="selected" {/if} value="硕士研究生">硕士研究生</option>
+                          <option {if ($arts.edubg=="本科")} selected="selected" {/if} value="本科">本科</option>
+                          <option {if ($arts.edubg=="专科")} selected="selected" {/if} value="专科">专科</option>
+                          <option {if ($arts.edubg=="中专/高中/中技")} selected="selected" {/if} value="中专/高中/中技">中专/高中/中技</option>
+                          <option {if ($arts.edubg=="初中")} selected="selected" {/if} value="初中">初中</option>
+                          <option {if ($arts.edubg=="小学")} selected="selected" {/if} value="小学">小学</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="group_id" class="col-sm-2 control-label no-padding-right">学位</label>
+                      <div class="col-sm-6">
+                        <select name="degree" style="width: 100%;">
+                          <option selected="selected" value="0">--学位选择--</option>
+                          <option {if ($arts.degree=="博士")} selected="selected" {/if} value="博士">博士</option>
+                          <option {if ($arts.degree=="硕士")} selected="selected" {/if} value="硕士">硕士</option>
+                          <option {if ($arts.degree=="学士")} selected="selected" {/if} value="学士">学士</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="group_id" class="col-sm-2 control-label no-padding-right">职称</label>
+                      <div class="col-sm-6">
+                        <select name="ptitle"  style="width: 100%;">
+                          <option selected="selected" value="0">--职称选择--</option>
+                          <option {if ($arts.ptitle=="教授")} selected="selected" {/if} value="教授">教授</option>
+                          <option {if ($arts.ptitle=="副教授")} selected="selected" {/if} value="副教授">副教授</option>
+                          <option {if ($arts.ptitle=="讲师")} selected="selected" {/if} value="讲师">讲师</option>
+                          <option {if ($arts.ptitle=="助教")} selected="selected" {/if} value="助教">助教</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="group_id" class="col-sm-2 control-label no-padding-right">健康状况</label>
+                      <div class="col-sm-6">
+                        <select name="health" style="width: 100%;">
+                          <option selected="selected" value="0">--健康状况选择--</option>
+                          <option {if ($arts.health=="健康")} selected="selected" {/if} value="健康">健康</option>
+                          <option {if ($arts.health=="亚健康")} selected="selected" {/if} value="亚健康">亚健康</option>
+                          <option {if ($arts.health=="疾病")} selected="selected" {/if} value="疾病">疾病</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label no-padding-right">专业技术职务</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" id="worktime" placeholder="" value="{$arts.specialjob}" name="specialjob" required="required" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="zhiwu" class="col-sm-2 control-label no-padding-right">熟悉专业有何专长</label>
+                      <div class="col-sm-6">
+                        <textarea  rows="7"  class="form-control" id="worktime" placeholder=""  name="specialskill" required type="text">{$arts.specialskill}</textarea>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">保存信息</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Page Body --> 
+    </div>
+    <!-- /Page Content --> 
+  </div>
+</div>
+
+<!--Basic Scripts-->
+<script src="__ADMIN__/style/jquery_002.js"></script>
+<script src="__ADMIN__/style/bootstrap.js"></script>
+<script src="__ADMIN__/style/jquery.js"></script>
+<script src="__ADMIN__/js/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__/style/jquery.js"></script> 
+<script type="text/javascript" src="__ADMIN__/style/jquery.cityselect.js"></script> 
+<!--Beyond Scripts--> 
+<script src="__ADMIN__/style/beyond.js"></script> 
+<script src="__ADMIN__/style/distpicker.data.js"></script> 
+<script src="__ADMIN__/style/distpicker.js"></script> 
+<script src="__ADMIN__/style/style.js"></script> 
+<script src="__ADMIN__/style/fileinput.js" type="text/javascript"></script> 
+<script src="__ADMIN__/style/fileinput_locale_fr.js" type="text/javascript"></script> 
+<script src="__ADMIN__/style/fileinput_locale_es.js" type="text/javascript"></script>
+<script src="__ADMIN__/js/amazeui.min.js"></script>
+<script src="__ADMIN__/js/app.js"></script>
+</body>
+</html>

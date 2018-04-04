@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html><head>
+	    <meta charset="utf-8">
+    <title>干部考核与信息管理系统</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="style/font-awesome.css" rel="stylesheet">
+    <link href="style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="style/demo.css" rel="stylesheet">
+    <link href="style/typicons.css" rel="stylesheet">
+    <link href="style/animate.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
+</head>
+<body>
+
+	<!-- 头部 -->
+	<div class="navbar">
+        <div class="navbar-inner">
+            <div class="navbar-container">
+                <!-- Navbar Barnd -->
+                <div class="navbar-header pull-left">
+                    <a href="#" class="navbar-brand">
+                        <small>
+                                <img src="images/logo.png" alt="">
+                            </small>
+                    </a>
+                </div>
+                <!-- /Navbar Barnd -->
+                <!-- Sidebar Collapse -->
+                <div class="sidebar-collapse" id="sidebar-collapse">
+                    <i class="collapse-icon fa fa-bars"></i>
+                </div>
+                <!-- /Sidebar Collapse -->
+                <!-- Account Area and Settings -->
+                <div class="navbar-header pull-right">
+                    <div class="navbar-account">
+                        <ul class="account-area">
+                            <li>
+                                <a class="login-area dropdown-toggle" data-toggle="dropdown">
+                                    <div class="avatar" title="View your public profile">
+                                        <img src="images/adam-jansen.jpg">
+                                    </div>
+                                    <section>
+                                        <h2><span class="profile"><span>张三(20040058)</span></span></h2>
+                                    </section>
+                                </a>
+                                <!--Login Area Dropdown-->
+                               <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
+                                    <li class="username"><a>张三</a></li>
+                                    <li class="dropdown-footer">
+                                        <a href="/admin/user/logout.html">
+                                                退出登录
+                                            </a>
+                                    </li>
+                                    <li class="dropdown-footer">
+                                        <a href="/admin/user/changePwd.html">
+                                                修改密码
+                                            </a>
+                                    </li>
+                                </ul>
+                                <!--/Login Area Dropdown-->
+                            </li>
+                            <!-- /Account Area -->
+                            <!--Note: notice that setting div must start right after account area list.
+                                no space must be between these elements-->
+                            <!-- Settings -->
+                        </ul>
+                    </div>
+                </div>
+                <!-- /Account Area and Settings -->
+            </div>
+        </div>
+    </div>
+
+    <!-- /头部 -->
+    
+    <div class="main-container container-fluid">
+        <div class="page-container">
+                        <!-- Page Sidebar -->
+            <div class="page-sidebar" id="sidebar">
+                <!-- Page Sidebar Header-->
+                <div class="sidebar-header-wrapper">
+                    <input class="searchinput" type="text">
+                    <i class="searchicon fa fa-search"></i>
+                    <div class="searchhelper">干部姓名,编号查询</div>
+                </div>
+                <!-- /Page Sidebar Header -->
+                <!-- Sidebar Menu -->
+                <ul class="nav sidebar-menu">
+                    <!--Dashboard-->  
+                    <li>
+                        <a href="#" >
+                            <i class="menu-icon fa fa-home"></i>
+                            <span class="menu-text">首页</span>
+                        </a>
+                                                  
+                    </li>           
+                    <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon fa fa-user"></i>
+                            <span class="menu-text">干部信息管理</span>
+                            <i class="menu-expand"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                        干部添加 </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                             <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                        干部信息查看 </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                        干部信息表生成 </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                        干部考核管理</span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                        </ul>                            
+                    </li> 
+
+                    <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon fa fa-file"></i>
+                            <span class="menu-text">干部测评</span>
+                            <i class="menu-expand"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                       民主测评
+                                    </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                       德的考核考察
+                                    </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                       班子测评
+                                    </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                        </ul>                            
+                    </li> 
+                     <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon fa fa-file-text"></i>
+                            <span class="menu-text">部门信息汇总</span>
+                            <i class="menu-expand"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                       信息总汇
+                                    </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                       民主测评
+                                    </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                       民主测评（德）
+                                    </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                        中层互评
+                                    </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                        中层互评（德）
+                                    </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                        </ul>                            
+                    </li>
+                    <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon fa fa-address-card"></i>
+                            <span class="menu-text">用户管理</span>
+                            <i class="menu-expand"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                       管理员添加
+                                    </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                       管理员列表
+                                    </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                       用户权限
+                                    </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/document/index.html">
+                                    <span class="menu-text">
+                                       修改个人密码
+                                    </span>
+                                    <i class="menu-expand"></i>
+                                </a>
+                            </li>
+                        </ul>                            
+                    </li>
+                    <li>
+                        <a href="#" >
+                            <i class="menu-icon fa fa-gear"></i>
+                            <span class="menu-text">部门管理</span>
+                        </a>
+                                                  
+                    </li>                          
+                    
+                </ul>
+                <!-- /Sidebar Menu -->
+            </div>
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                 <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                    <li>
+                        <a href="#">首页</a>
+						</li>                  
+                    <li>
+                        <a href="#">部门信息汇总</a>
+                    </li>
+                   <li class="active">民主测评汇总表</li>
+                  </ul>
+                </div>
+               <table width="100%" align="left" border="0;" cellpadding="10px;">
+	<tbody>
+		<tr>
+			<td width="100%" height="369" valign="top">
+				<table width="100%" align="center" id="data-excel" style="vertical-align: top;" bgcolor="#ffffff" border="0" cellspacing="1"  cellpadding="10px">
+					<tbody>
+					
+					<div class="shengchengbiao">
+						<tr align="center" bgcolor="#ffffff">
+					       
+							<td width="100%" align="center" style="font-size: 18px; font-weight: bold; height: 32px;" colspan="2">浙江农林大学领导干部测评表（群众）</td>
+						</tr>
+						</div>
+						<tr align="center" bgcolor="#ffffff">
+							<td width="100%" style="padding-top: 10px;" colspan="12">
+								<table  width="98%" align="center" id="data-excel" style="vertical-align: top;" bgcolor="#333333" border="1" cellspacing="1"  cellpadding="0">
+								<tbody id="list">
+									<tr style="text-align: center;" bgcolor="#ffffff" b>
+										<th width="30" align="center" rowspan="2">序号</th>
+										<th width="30" align="center" rowspan="2">姓名</th>
+										<th width="44" align="center" rowspan="2">有效票</th>
+										<th style="text-align: center" colspan="5">德</th>
+										<th style="text-align: center" colspan="5">能</th>
+										<th style="text-align: center" colspan="5">勤</th>
+										<th style="text-align: center" colspan="5">绩</th>
+										<th style="text-align: center" colspan="5">廉</th>
+										<th style="text-align: center" colspan="5">总体评价</th>
+										<th style="text-align: center" >汇总</th>
+										
+									</tr>
+									<tr style="text-align: center;" bgcolor="#ffffff">
+										<td width="32">好</td>
+										<td width="32">较好</td>
+										<td width="32">一般</td>
+										<td width="15">差</td>
+										<td width="32" bgcolor="#cccccc">得分</td>
+										<td width="32">好</td>
+										<td width="32">较好</td>
+										<td width="32">一般</td>
+										<td width="15">差</td>
+										<td width="32" bgcolor="#cccccc">得分</td>
+										
+										<td width="32">好</td>
+										<td width="32">较好</td>
+										<td width="32">一般</td>
+										<td width="15">差</td>
+										
+										<td width="32" bgcolor="#cccccc">得分</td>
+										<td width="32">好</td>
+										<td width="32">较好</td>
+										<td width="32">一般</td>
+										<td width="15">差</td>
+										<td width="32" bgcolor="#cccccc">得分</td>
+										
+										<td width="32">好</td>
+										<td width="32">较好</td>
+										<td width="32">一般</td>
+										<td width="15">差</td>
+										<td width="32" bgcolor="#cccccc">得分</td>
+										<td width="32">优秀</td>
+										<td width="32">称职</td>
+										<td width="60" style="line-height: 20px;">基本称职</td>
+										<td width="40" style="line-height: 20px;">不称职</td>
+										<td width="40" style="line-height: 20px;">得分</td>
+										<td style="line-height: 20px;">得分</td>
+									</tr>
+									<tr style="text-align: center" bgcolor="#ffffff">
+										<td width="23" bgcolor="#ffffff" rowspan="2">1</td>
+										<td width="44" bgcolor="#ffffff" rowspan="2">xxx</td>
+										<td width="44" style="line-height: 14px; text-align: center;" bgcolor="#ffffff" rowspan="2" >221</td>
+										<td>192</td>
+										<td>24</td>
+										<td>5</td>
+										<td>0</td>
+										<td bgcolor="#cccccc">98.5</td>
+										<td>192</td>
+										<td>24</td>
+										<td>5</td>
+										<td>0</td>
+										<td bgcolor="#cccccc">98.5</td>
+										<td>192</td>
+										<td>24</td>
+										<td>5</td>
+										<td>0</td>
+										<td bgcolor="#cccccc">98.5</td>
+										<td>192</td>
+										<td>24</td>
+										<td>5</td>
+										<td>0</td>
+										<td bgcolor="#cccccc">98.5</td>
+										<td>192</td>
+										<td>24</td>
+										<td>5</td>
+										<td>0</td>
+										<td bgcolor="#cccccc">98.5</td>
+										<td>192</td>
+										<td>24</td>
+										<td>5</td>
+										<td>0</td>
+										<td bgcolor="#cccccc">98.5</td>
+										<td rowspan="2">97.57</td>
+									</tr>
+									<tr style="text-align: center;" bgcolor="#ffffff">
+										<td>86.9%</td>
+										<td>10.9%</td>
+										<td>2.3%</td>
+										<td>0.0%</td>
+										<td bgcolor="#cccccc"></td>
+										<td>86.9%</td>
+										<td>10.9%</td>
+										<td>2.3%</td>
+										<td>0.0%</td>
+										<td bgcolor="#cccccc"></td>
+										<td>86.9%</td>
+										<td>10.9%</td>
+										<td>2.3%</td>
+										<td>0.0%</td>
+										<td bgcolor="#cccccc"></td>
+										<td>86.9%</td>
+										<td>10.9%</td>
+										<td>2.3%</td>
+										<td>0.0%</td>
+										<td bgcolor="#cccccc"></td>
+										<td>86.9%</td>
+										<td>10.9%</td>
+										<td>2.3%</td>
+										<td>0.0%</td>
+										<td bgcolor="#cccccc"></td>
+										<td>86.9%</td>
+										<td>10.9%</td>
+										<td>2.3%</td>
+										<td>0.0%</td>
+										<td bgcolor="#cccccc"></td>
+										
+									</tr>
+								</tbody>	
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+              
+        <!--Basic Scripts-->
+    <script src="style/jquery_002.js"></script>
+    <script src="style/bootstrap.js"></script>
+    <script src="style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="style/beyond.js"></script>
+    
+
+
+</body></html>

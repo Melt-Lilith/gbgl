@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><!--Head--><head>
+    <meta charset="utf-8">
+    <title>干部管理系统</title>
+    <meta name="description" content="login page">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    <link href="__ADMIN__/css/login2.css" rel="stylesheet" type="text/css" />
+</head>
+<!--Head Ends-->
+<!--Body-->
+
+<body  style="background:url(__ADMIN__/images/login.jpg)">
+ <div>
+<!--     <div class="login-container animated fadeInDown">
+        <form action="" method="post">
+            <div class="loginbox bg-white">
+                <div class="loginbox-title">SIGN IN</div>
+                <div class="loginbox-textbox">
+                    <input value="admin" class="form-control" placeholder="name" name="name" type="text">
+                </div>
+                <div class="loginbox-textbox">
+                    <input class="form-control" placeholder="password" name="password" type="password">
+                </div>
+                <div class="loginbox-textbox">
+                    <input class="form-control" style="width:100px;float:left;" name="code" type="text">
+                    <img src="{:captcha_src()}" onclick="this.src='{:captcha_src()}?'+Math.random();" width="120" style="float:left; cursor:pointer;" alt="captcha" />
+                </div>
+                <div class="loginbox-submit">
+                    <input class="btn btn-primary btn-block" value="Login" type="submit">
+                </div>
+            </div>
+                <div class="logobox">
+                    <p class="text-center">ThinkPHP5.0</p>
+                </div>
+        </form>
+    </div>
+    <div class="login" style="margin-top:50px;"> -->
+   
+    <div style="padding-top:80px;">
+    <h1>干部考核与信息管理系统</h1>
+    </div>
+   <div class="login" style="margin-top:50px;">     
+        <div class="header">
+            <div class="switch" id="switch"><a class="switch_btn_focus" id="switch_qlogin" href="javascript:void(0);" tabindex="7">登录</a>
+                 <!--<a class="switch_btn" id="switch_login" href="javascript:void(0);" tabindex="8">快速注册</a><div class="switch_bottom" id="switch_bottom" style="position: absolute; width: 64px; left: 0px;"></div>-->
+            </div>
+        </div>    
+      
+        
+        <div class="web_qr_login" id="web_qr_login" style="display: block; height: 280px;">    
+
+                <!--登录-->
+                <div class="web_login" id="web_login">
+                   
+                   
+                   <div class="login-box">
+        
+                
+                <div class="login_form">
+                    <form  name="loginform" accept-charset="utf-8" id="login_form" class="loginForm" method="post"><input type="hidden" name="did" value="0"/>
+                   <input type="hidden" name="to" value="log"/>
+                    <div class="uinArea" id="uinArea">
+                    <label class="input-tips" for="u">帐号：</label>
+                    <div class="inputOuter" id="uArea">
+                        
+                        <input type="text" id="u" name="worknum" class="inputstyle" style="background-color: #fff;" />
+                    </div>
+                    </div>
+                    <div class="pwdArea" id="pwdArea">
+                   <label class="input-tips" for="p">密码：</label> 
+                   <div class="inputOuter" id="pArea">
+                        
+                        <input type="password" id="p" name="password" class="inputstyle"/>
+                    </div>
+                    </div>
+                   <div class="uinArea" id="uinArea">
+                   <label class="input-tips1" for="u">验证码：</label>
+                  <div class="loginbox-textbox">
+                                     
+                                     <img src="{:captcha_src()}" onclick="this.src='{:captcha_src()}?'+Math.random();" width="100" style="float:left; cursor:pointer;margin-left: 8px;" alt="captcha" />
+                                     <input class="form-control" style="width:90px;float:left;" name="code" type="text">
+                    </div>
+                   </div>
+                    <div style="padding-left:60px;margin-top:0px;"><input type="submit" value="登 录" style="width:150px;" class="button_blue"/></div>
+                  </form>
+               </div>
+               
+                    </div>
+                   
+                </div>
+                <!--登录end-->
+      </div>
+      </div>
+      </div>
+    <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+
+
+
+
+</body><!--Body Ends--></html>

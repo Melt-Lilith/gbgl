@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>干部考核与信息管理系统</title>
+<meta name="description" content="Dashboard">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--Basic Styles-->
+<link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+<link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+<link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+<!--Beyond styles-->
+<link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+<link href="__ADMIN__/style/demo.css" rel="stylesheet">
+<link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+<link href="__ADMIN__/style/animate.css" rel="stylesheet">
+<link href="__ADMIN__/style/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__/style/style.css" rel="stylesheet">
+<link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+<link href="__ADMIN__/style/admin.css" rel="stylesheet">
+<link href="__ADMIN__/style/app.css" rel="stylesheet">
+</head>
+<body>
+<!-- 头部 --> 
+{include file="public/top" /} 
+<!-- /头部 -->
+
+<div class="tpl-page-container tpl-page-header-fixed">
+    <!-- Page Sidebar --> 
+    {include file="public/left" /} 
+    <!-- /Page Sidebar --> 
+    <!-- Page Content -->
+    <div class="page-content"> 
+      <!-- Page Breadcrumb -->
+      <div>
+        <ol class="breadcrumb">
+          <li><a href="#">首页</a></li>
+          <li><a href="#">干部信息管理</a></li>
+          <li><a href="#">干部信息查看</a></li>
+          <li class="active">编辑</li>
+        </ol>
+      </div>
+      <!-- /Page Breadcrumb --> 
+      
+      <!-- Page Body -->
+      <div class="page-body">
+        <div class="row">
+          <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="widget">
+              <div class="widget-header bordered-bottom bordered-blue"> <span class="widget-caption">修改干部信息</span> </div>
+              <div class="widget-body">
+              <div class="widget-body1">
+                <div id="horizontal-form">
+                  <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data" >
+                    <input type="hidden" name="id" value="{$arts['id']}">
+                   
+                    
+                    <div class="form-group">
+                      <label for="group_id" class="col-sm-2 control-label">年度考核登记表</label>
+                      <div class="col-sm-6">
+                        <div class="kv-main">
+                          <input  name="niandu" type="file" multiple data-min-file-count="1">
+                        </div> {if(isset($arts.niandu))}
+                   <a href="__adminimg__/{$arts.niandu}" download="{$arts.adminid}年度考核登记表.doc"  class="btn btn-primary btn-sm shiny">
+                         <i class="fa fa-download"> </i> 已上传、点击下载
+                     </a>
+                   {else/}
+                  
+                         <i class="fa fa-download"> </i> 尚无上传文件
+                    
+                   {/if}
+                         
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="group_id" class="col-sm-2 control-label">培训情况登记表</label>
+                      <div class="col-sm-6">
+                        <div class="kv-main">
+                          <input  name="peixun" type="file" multiple data-min-file-count="1">
+                        </div> {if(isset($arts.peixun))}
+                         <a href="__adminimg__/{$arts.peixun}" download="{$arts.adminid}培训情况登记表.doc"  class="btn btn-primary btn-sm shiny">
+                         <i class="fa fa-download"> </i> 已上传、点击下载</a>
+                          {else/}
+                  
+                         <i class="fa fa-download"> </i> 尚无上传文件
+                    
+                   {/if}
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="group_id" class="col-sm-2 control-label">述职述德述廉述法报告</label>
+                      <div class="col-sm-6">
+                        <div class="kv-main">
+                          <input  name="shuzhi" type="file" multiple data-min-file-count="1">
+                        </div>
+                         {if(isset($arts.shuzhi))}
+                         <a href="__adminimg__/{$arts.shuzhi}" download="{$arts.adminid}述职述德述廉述法报告.doc"  class="btn btn-primary btn-sm shiny">
+                         <i class="fa fa-download"> </i> 已上传、点击下载</a>
+                          {else/}
+                  
+                         <i class="fa fa-download"> </i> 尚无上传文件
+                    
+                   {/if}
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">上传文件</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Page Body --> 
+    </div>
+    <!-- /Page Content --> 
+</div>
+
+<!--Basic Scripts--> 
+<script src="__ADMIN__/style/jquery_002.js"></script> 
+<script src="__ADMIN__/style/bootstrap.js"></script> 
+<script src="__ADMIN__/style/jquery.js"></script> 
+<script src="__ADMIN__/js/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__/style/jquery.js"></script> 
+<script type="text/javascript" src="__ADMIN__/style/jquery.cityselect.js"></script> 
+<!--Beyond Scripts--> 
+<script src="__ADMIN__/style/beyond.js"></script> 
+<script src="__ADMIN__/style/distpicker.data.js"></script> 
+<script src="__ADMIN__/style/distpicker.js"></script> 
+<script src="__ADMIN__/style/style.js"></script> 
+<script src="__ADMIN__/style/fileinput.js" type="text/javascript"></script> 
+<script src="__ADMIN__/style/fileinput_locale_fr.js" type="text/javascript"></script> 
+<script src="__ADMIN__/style/fileinput_locale_es.js" type="text/javascript"></script>
+<script src="__ADMIN__/js/amazeui.min.js"></script>
+<script src="__ADMIN__/js/app.js"></script>
+</body>
+</html>

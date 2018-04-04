@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>干部考核与信息管理系统</title>
+<meta name="description" content="Dashboard">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--Basic Styles-->
+<link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+<link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+<link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+<!--Beyond styles-->
+<link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+<link href="__ADMIN__/style/demo.css" rel="stylesheet">
+<link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+<link href="__ADMIN__/style/animate.css" rel="stylesheet">
+<link href="__ADMIN__/style/style.css" rel="stylesheet">
+<link href="__ADMIN__/style/amazeui.min.css" rel="stylesheet">
+<link href="__ADMIN__/style/admin.css" rel="stylesheet">
+<link href="__ADMIN__/style/app.css" rel="stylesheet">
+  <!-- 弹出窗口 2017.12.1-->
+<link href="__ADMIN__/style/animate.min.css" rel="stylesheet">
+<!-- <link href="__ADMIN__/style/common.css" rel="stylesheet"> -->
+
+<!-- end -->
+<!--Basic Scripts-->
+<script src="__ADMIN__/style/jquery_002.js"></script>
+<script src="__ADMIN__/style/bootstrap.js"></script>
+<script src="__ADMIN__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+</head>
+<body>
+<!-- 头部 --> 
+{include file="public/top"} 
+<!-- /头部 -->
+<div class="tpl-page-container tpl-page-header-fixed"> 
+  <!-- Page Sidebar --> 
+  {include file="public/left"} 
+  <!-- /Page Sidebar --> 
+{if($type=="班子测评")} 
+<!-- Page Content -->
+  <div class="tpl-content-wrapper"> 
+    <!-- Page Breadcrumb -->
+    <div>
+        <ol class="breadcrumb">
+          <li><a href="#">首页</a></li>
+          <li><a href="#">干部测评</a></li>
+          <li class="active">{$checktable.type}</li>
+        </ol>
+      </div>
+  <!-- /Page Breadcrumb -->
+    <div class="page-body">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget1"> 
+        <div class="widget-header bordered-bottom bordered-blue xa-widget-header"> <span class="widget-caption">测评</span> </div>          
+          <div class="widget-body1">
+            <div id="horizontal-form">
+              <table class="table table-bordered  table-hover table-condensed text-center">
+              <h1><b>{$artres["0"]["checkname"]}</b></h1>
+              <caption class="biaotoubiaoti">{$artres["0"]["checkname"]}&nbsp;&nbsp;&nbsp;&nbsp;{$artres["0"]["timestart"]}&nbsp;&nbsp;{$artres["0"]["timeend"]}</caption>
+                <thead>
+                  <tr>
+                  <th>ID</th>
+                      <th>部门</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                
+                
+                <tbody  id="list">
+                
+                {volist name="artres" id="art"}
+                <tr>
+                    <label>
+                    <td>{$art.cateid}</td>
+                  <td>{$art.catename}</td>
+                  <td class="cepinganniu3" >
+                  {if($checktable.type=="班子测评")}
+                    {if($art.status==1)}
+                      <a href="__index__/index.php/admin/ceping/cepin3/id/{$id}/cateid/{$art.cateid}.html?page={$key+1}" class="btn btn-success btn-sm shiny ">
+                         <i></i> 已测评
+                      </a>
+                    {elseif($art.status==2)}
+                      <a href="__index__/index.php/admin/ceping/cepin3/id/{$id}/cateid/{$art.cateid}.html?page={$key+1}"  class="btn btn-primary btn-sm shiny demo17 rubberBand" id="jzbtn">
+                         <i class="fa fa-edit">   </i>   测评
+                      </a>
+                      
+                    {/if}
+                  {/if}
+                  </td>
+                    </label>
+                </tr>
+                {/volist}
+                  </tbody>
+                
+              </table>
+              
+              <div class="fanhui"><a href="{:url('ceping/lst3')}" class="btn btn-default">返回</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <!-- /Page Content -->
+{else/}
+  <!-- Page Content -->
+  <div class="tpl-content-wrapper"> 
+    <!-- Page Breadcrumb -->
+    <div>
+        <ol class="breadcrumb">
+          <li><a href="#">首页</a></li>
+          <li><a href="#">干部测评</a></li>
+          <li class="active">{$checktable.type}</li>
+        </ol>
+      </div>
+    <!-- /Page Breadcrumb -->
+    <div class="page-body">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget1"> 
+        <div class="widget-header bordered-bottom bordered-blue xa-widget-header"> <span class="widget-caption">测评</span> </div>          
+          <div class="widget-body1">
+            <div id="horizontal-form">
+              <table class="table table-bordered  table-hover table-condensed text-center" id="wxf-text-center">
+          <!--    <h1><b>{$artres["0"]["checkname"]}</b></h1>-->
+              <caption class="biaotoubiaoti">{$artres["0"]["checkname"]}&nbsp;&nbsp;&nbsp;&nbsp;{$artres["0"]["timestart"]}&nbsp;&nbsp;{$artres["0"]["timeend"]}</caption>
+                <thead>
+                  <tr>
+                   
+                 <!--     <th width="10%">工号</th> -->
+                     <th width="10%">姓名</th>
+                     
+                     <th width="40%">职务</th>
+                    
+                   <th width="10%">述职述德述廉述法报告</th>
+                       <!-- <th width="10%">培训情况登记表</th> -->
+                     <th width="10%">操作</th>
+                  </tr>
+                </thead>
+                
+                
+                <tbody  id="list">
+                
+                {volist name="artres" id="art"}
+                <tr>
+                    <label>
+                 
+                 <!--  <td>{$art.worknum}</td> -->
+                  <td><a href="#">{$art.name}</a></td>
+                 
+                  <td style="text-align:left; ">&nbsp;&nbsp;{$art.job}</td>
+               
+                  <td>
+                   {if ($art.shuzhi)}  
+                   <a href="__adminimg__/{$art.shuzhi}" download="{$art.name}述职述德述廉述法报告.doc"  class="btn btn-success btn-sm shiny">
+                         <i class="fa fa-download">   </i>   下载
+                      </a>
+                  {else/}
+                      <a href="#" download=""  class="btn btn-primary btn-sm shiny">
+                     <i class="fa fa-download"> </i> 无文件
+                   </a>
+                  {/if}
+                  </td>
+                  <!-- <td>
+                  {if ($art.niandu)}   
+                    <a href="__adminimg__/{$art.niandu}" download="{$art.name}年度考核登记表.doc"  class="btn btn-primary btn-sm shiny">
+                     <i class="fa fa-download"> </i> 下载
+                   </a>
+                   {else/}
+                   <a href="#" download=""  class="btn btn-primary btn-sm shiny">
+                     <i class="fa fa-download"> </i> 无文件
+                   </a>
+                   {/if}
+                 </td>
+                 <td>  
+                    {if ($art.niandu)}   
+                    <a href="__adminimg__/{$art.peixun}" download="{$art.name}培训情况登记表.doc"  class="btn btn-primary btn-sm shiny">
+                     <i class="fa fa-download"> </i> 下载
+                   </a>
+                   {else/}
+                   <a href="#" download=""  class="btn btn-primary btn-sm shiny">
+                     <i class="fa fa-download"> </i> 无文件
+                   </a>
+                   {/if}
+                 </td> -->
+                   <td class="cepinganniu3" >
+                  {if($checktable.type=="民主测评")}
+                    {if($art.status==1)}
+                      <a href="__index__/index.php/admin/ceping/cepin1/id/{$id}.html?page={$key+1}" class="btn btn-success btn-sm shiny ">
+                         <i></i> 已测评
+                      </a>
+                    {elseif($art.status==2)}
+                      <a href="__index__/index.php/admin/ceping/cepin1/id/{$id}.html?page={$key+1}"  class="btn btn-primary btn-sm shiny">
+                         <i class="fa fa-edit">   </i>   测评
+                      </a>
+                    {/if}
+                  {elseif($checktable.type=="德的考核考察")}
+                    {if($art.status==1)}
+                      <a href="__index__/index.php/admin/ceping/cepin2/id/{$id}.html?page={$key+1}" class="btn btn-success btn-sm shiny ">
+                         <i></i> 已测评
+                      </a>
+                    {elseif($art.status==2)}
+                      <a href="__index__/index.php/admin/ceping/cepin2/id/{$id}.html?page={$key+1}"  class="btn btn-primary btn-sm shiny">
+                         <i class="fa fa-edit">   </i>   测评
+                      </a>
+                    {/if}
+                  {elseif($checktable.type=="班子测评")}
+                    {if($art.status==1)}
+                      <a href="#" class="btn btn-success btn-sm shiny">
+                         <i></i> 已测评
+                      </a>
+                    {elseif($art.status==2)}
+                      <a href="__index__/index.php/admin/ceping/cepin3/id/{$id}/beworknum/{$art.worknum}.html?page={$key+1}""  class="btn btn-primary btn-sm shiny">
+                         <i class="fa fa-edit">   </i>   测评
+                      </a>                  
+                    {/if}
+                  {elseif($checktable.type=="中层互评")}
+                    {if($art.status==1)}
+                      <a href="__index__/index.php/admin/ceping/cepin1/id/{$id}.html?page={$key+1}" class="btn btn-success btn-sm shiny ">
+                         <i></i> 已测评
+                      </a>
+                    {elseif($art.status==2)}
+                      <a href="__index__/index.php/admin/ceping/cepin1/id/{$id}.html?page={$key+1}"  class="btn btn-primary btn-sm shiny">
+                         <i class="fa fa-edit">   </i>   测评
+                      </a>
+                    {/if}
+                  {elseif($checktable.type=="德的干部互评")}
+                    {if($art.status==1)}
+                      <a href="__index__/index.php/admin/ceping/cepin/id/{$id}.html?page={$key+1}" class="btn btn-success btn-sm shiny ">
+                         <i></i> 已测评
+                      </a>
+                    {elseif($art.status==2)}
+                      <a href="__index__/index.php/admin/ceping/cepin2/id/{$id}.html?page={$key+1}"  class="btn btn-primary btn-sm shiny">
+                         <i class="fa fa-edit">   </i>   测评
+                      </a>
+                    {/if}
+                    {elseif($checktable.type=="正职测评")}
+                    {if($art.status==1)}
+                      <a href="__index__/index.php/admin/ceping/cepin1/id/{$id}.html?page={$key+1}" class="btn btn-success btn-sm shiny ">
+                         <i></i> 已测评
+                      </a>
+                    {elseif($art.status==2)}
+                      <a href="__index__/index.php/admin/ceping/cepin1/id/{$id}.html?page={$key+1}"  class="btn btn-primary btn-sm shiny">
+                         <i class="fa fa-edit">   </i>   测评
+                      </a>
+                    {/if}
+                    
+                    {elseif($checktable.type=="试用期干部测评")}
+                    {if($art.status==1)}
+                      <a href="__index__//index.php/admin/ceping/cepin4/id/{$id}.html?page={$key+1}" class="btn btn-success btn-sm shiny ">
+                         <i></i> 已测评
+                      </a>
+                    {elseif($art.status==2)}
+                      <a href="__index__/index.php/admin/ceping/cepin4/id/{$id}.html?page={$key+1}"  class="btn btn-primary btn-sm shiny">
+                         <i class="fa fa-edit">   </i>   测评
+                      </a>
+                    {/if}
+                  {/if}
+                  </td>
+                    </label>
+                </tr>
+                {/volist}
+                  </tbody>
+                
+              </table>
+              <!--手机-->
+                                <table  class="table table-bordered  table-hover table-condensed text-center" id="wuxiaofa-text-center">
+                              <!--  <h1><b>民主测评</b></h1>-->
+                                <thead>
+                                        <tr>
+                                            <th>姓名</th>
+                                            <th>操作</th>
+                                            </tr>
+                                    </thead>
+                                    <tbody>
+                                     {volist name="artres" id="art"}
+                <tr>
+                    <label>
+                  <td><a href="#">{$art.name}</a></td>
+                 
+                 
+                  <td class="cepinganniu3" >
+                  {if($checktable.type=="民主测评")}
+                    {if($art.status==1)}
+                      <a href="__index__/index.php/admin/ceping/cepin1/id/{$id}.html?page={$key+1}" class="btn btn-success btn-block shiny ">
+                         <i></i> 已测评
+                      </a>
+                    {elseif($art.status==2)}
+                      <a href="__index__/index.php/admin/ceping/cepin1/id/{$id}.html?page={$key+1}"  class="btn btn-primary btn-block shiny">
+                         <i class="fa fa-edit">   </i>   测评
+                      </a>
+                    {/if}
+                  {elseif($checktable.type=="德的考核考察")}
+                    {if($art.status==1)}
+                      <a href="__index__/index.php/admin/ceping/cepin2/id/{$id}.html?page={$key+1}" class="btn btn-success btn-block shiny ">
+                         <i></i> 已测评
+                      </a>
+                    {elseif($art.status==2)}
+                      <a href="__index__/index.php/admin/ceping/cepin2/id/{$id}.html?page={$key+1}"  class="btn btn-primary btn-block shiny">
+                         <i class="fa fa-edit">   </i>   测评
+                      </a>
+                    {/if}
+                  
+                  {elseif($checktable.type=="中层互评")}
+                    {if($art.status==1)}
+                      <a href="__index__/index.php/admin/ceping/cepin1/id/{$id}.html?page={$key+1}" class="btn btn-success btn-block shiny ">
+                         <i></i> 已测评
+                      </a>
+                    {elseif($art.status==2)}
+                      <a href="__index__/index.php/admin/ceping/cepin1/id/{$id}.html?page={$key+1}"  class="btn btn-primary btn-block shiny">
+                         <i class="fa fa-edit">   </i>   测评
+                      </a>
+                    {/if}
+                  {elseif($checktable.type=="德的干部互评")}
+                    {if($art.status==1)}
+                      <a href="__index__/index.php/admin/ceping/cepin2/id/{$id}.html?page={$key+1}" class="btn btn-success btn-block shiny  ">
+                         <i></i> 已测评
+                      </a>
+                    {elseif($art.status==2)}
+                      <a href="__index__/index.php/admin/ceping/cepin2/id/{$id}.html?page={$key+1}"  class="btn btn-primary btn-block shiny">
+                         <i class="fa fa-edit">   </i>   测评
+                      </a>
+                    {/if}
+
+                    {elseif($checktable.type=="正职测评")}
+                    {if($art.status==1)}
+                      <a href="__index__/index.php/admin/ceping/cepin1/id/{$id}.html?page={$key+1}" class="btn btn-success btn-sm shiny ">
+                         <i></i> 已测评
+                      </a>
+                    {elseif($art.status==2)}
+                      <a href="__index__/index.php/admin/ceping/cepin1/id/{$id}.html?page={$key+1}"  class="btn btn-primary btn-sm shiny">
+                         <i class="fa fa-edit">   </i>   测评
+                      </a>
+                    {/if}
+                     {elseif($checktable.type=="试用期干部测评")}
+                    {if($art.status==1)}
+                      <a href="__index__//index.php/admin/ceping/cepin4/id/{$id}.html?page={$key+1}" class="btn btn-success btn-block shiny ">
+                         <i></i> 已测评
+                      </a>
+                    {elseif($art.status==2)}
+                      <a href="__index__/index.php/admin/ceping/cepin4/id/{$id}.html?page={$key+1}"  class="btn btn-primary btn-block shiny">
+                         <i class="fa fa-edit">   </i>   测评
+                      </a>
+                    {/if}
+                  {/if}
+                  </td>
+                    </label>
+                </tr>
+                {/volist}
+                                      <!--  <tr>
+                                          <label>
+                                             <td><a href="#">{$art.name}</a></td>
+                                            <td style="text-align:left; "> <a href="__index__/index.php/admin/ceping/cepin1/id/{$id}.html?page={$key+1}"  class="btn btn-primary btn-block shiny" style="height: 40px;">
+                         <i class="fa fa-edit" style="line-height: 25px;">   </i>   测评
+                      </a></td>
+                                            </label>
+                                            </tr>-->
+                                            </tbody>
+                                        </table>
+                                  
+              {if($checktable.type=="民主测评")}
+              <div class="fanhui"><a href="{:url('ceping/lst1')}" class="btn btn-default">返回</a></div>
+              {elseif($checktable.type=="德的考核考察")}
+              <div class="fanhui"><a href="{:url('ceping/lst2')}" class="btn btn-default">返回</a></div>
+              {elseif($checktable.type=="中层互评")}
+              <div class="fanhui"><a href="{:url('ceping/lst4')}" class="btn btn-default">返回</a></div>
+              {elseif($checktable.type=="德的干部互评")}
+              <div class="fanhui"><a href="{:url('ceping/lst5')}" class="btn btn-default">返回</a></div>
+              {elseif($checktable.type=="试用期干部测评")}
+              <div class="fanhui"><a href="{:url('ceping/lst6')}" class="btn btn-default">返回</a></div>
+              {elseif($checktable.type=="正职测评")}
+              <div class="fanhui"><a href="{:url('ceping/lst8')}" class="btn btn-default">返回</a></div>
+              {/if}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>
+  <!-- /Page Content -->
+
+  
+  {/if}
+</div>
+  <!-- 弹出窗口 -->
+<div id="HBox" style="width:300px;height:270px;margin:0 auto;box-shadow:1px 1px 5px #333;-webkit-box-shadow:1px 1px 5px #333;display:none;background-color:#ffffff;">
+ <p style="margin-top : 60px; margin-left:30px;font-size: 35px;font-family: Microsoft YaHei;">系统正在处理中</p>
+</div>
+<!-- end -->
+
+ <script>
+// $(function(){
+  $("#jzbtn").click(function(){
+  //var $el = $('.dialog');
+  //$el.hDialog(); //默认调用
+  //定时关闭
+  $('.demo17').hDialog({width:300,height: 150,hideTime: 10000, modalHide: false,closeHide: false});
+
+  console.log("111"); //返回顶部
+ // $.goTop();
+
+});
+
+ // alert("11");
+</script>
+<!-- 弹出框口 -->
+<script src="__ADMIN__/style/jquery-1.9.1.min.js"></script>
+<script src="__ADMIN__/style/jquery.hDialog.min.js"></script>
+<!-- end -->
+<script src="__ADMIN__/js/jquery.min.js"></script> 
+<script src="__ADMIN__/style/beyond.js"></script>
+<script src="__ADMIN__/js/amazeui.min.js"></script>
+<script src="__ADMIN__/js/app.js"></script>
+</body>
+</html>
